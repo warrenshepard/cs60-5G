@@ -26,6 +26,7 @@ from . import store
 
 SERVICVE_NAME = "nrf"
 
+
 def handle_message(msg):
     """Handles a single incoming request. Returns the reply message (as a dictionary)."""
     # get message info
@@ -53,7 +54,7 @@ def handle_message(msg):
             dst=src,
             msg_type=api.nrf.REGISTER_OK,
             body=reply_body,
-            id=id,
+            id=id
         )
     
     if msg_type == api.nrf.LOOKUP:
@@ -76,17 +77,17 @@ def handle_message(msg):
             dst=src,
             msg_type=api.nrf.LOOKUP_RESULT,
             body=reply_body,
-            id=id,
+            id=id
         )
 
-    # if other message type sent, return an error
+    # if unknown message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
         src=SERVICVE_NAME,
         dst=src,
         msg_type=api.common.ERROR,
         body=reply_body,
-        id=id,
+        id=id
     )
 
 

@@ -15,3 +15,4 @@ from . import policy
 from . import amf
 from . import smf
 from . import upf
+from . import application

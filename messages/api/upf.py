@@ -11,3 +11,7 @@ AI Statement: None.
 # CONTROL
 RULE_INSTALL = "RuleInstall"
 RULE_INSTALL_OK = "RuleInstallOk"
+
+# DATA
+USER_DATA_UP = "UserDataUp"
+USER_DATA_DOWN = "UserDataDown"
