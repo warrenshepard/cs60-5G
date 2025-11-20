@@ -97,16 +97,18 @@ cs60-5g/
 └─ Makefile                       # make run | test | lint | format
 
 
-                                                      **Device**  
-                                                        |  
-                                                        |  
-                                                        |  
-                                                  **Base station**  
-                                                   /        \  
-                                                  /          \  
-                                                 /            \  
-                                               **UPF**            **AMF**  
-                                                |              |  
-                                                |              |  
-                                                |              |  
-                                           **Application**        **SMF**  
+```
+                                                      **Device**
+                                                         |
+                                                         |
+                                                         |
+                                                   **Base station**
+                                                    /           \
+                                                   /             \
+                                                  /               \
+                                               **UPF**           **AMF**
+                                                 |                 |
+                                                 |                 |
+                                                 |                 |
+                                          **Application**        **SMF**
+```
