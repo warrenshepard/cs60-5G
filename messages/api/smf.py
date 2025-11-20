@@ -9,3 +9,4 @@ AI Statement: None.
 """
 
 CREATE_SESSION = "CreateSession"
+CREATE_SESSION_OK = "CreateSessionOk"

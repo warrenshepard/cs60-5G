@@ -14,3 +14,4 @@ from . import common
 from . import policy
 from . import amf
 from . import smf
+from . import upf

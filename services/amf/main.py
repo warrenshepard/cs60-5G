@@ -158,6 +158,7 @@ def handle_session_request(request):
     store.add_session(session_id, device_id, slice_id)
 
     # format reply
+    # TODO: (IMPORTANT) probably send IP address as well
     reply_body = {
         "admitted": True,
         "device_id": device_id,
