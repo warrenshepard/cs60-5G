@@ -77,14 +77,14 @@ def main():
     control_thread.start()
     data_thread.start()
 
-    logging.info(SERVICE_NAME, " started (control + data)")
+    logging.log_info(SERVICE_NAME, " started (control + data)")
 
     control_thread.join()
     data_thread.join()
 
 
 if __name__ == "__main__":
-    
+
     if len(sys.argv) > 1:
         pass
 

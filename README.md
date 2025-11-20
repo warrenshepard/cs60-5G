@@ -95,3 +95,18 @@ cs60-5g/
 │     ├─ small_file.bin
 │     └─ policies_min.json
 └─ Makefile                       # make run | test | lint | format
+
+
+                                                      **Device**  
+                                                        |  
+                                                        |  
+                                                        |  
+                                                  **Base station**  
+                                                   /        \  
+                                                  /          \  
+                                                 /            \  
+                                               **UPF**            **AMF**  
+                                                |              |  
+                                                |              |  
+                                                |              |  
+                                           **Application**        **SMF**  
