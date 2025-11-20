@@ -98,17 +98,17 @@ cs60-5g/
 
 
 ```
-                                                      **Device**
+                                                       Device
                                                          |
                                                          |
                                                          |
-                                                   **Base station**
+                                                     Base station
                                                     /           \
                                                    /             \
                                                   /               \
-                                               **UPF**           **AMF**
+                                                UPF               AMF
                                                  |                 |
                                                  |                 |
                                                  |                 |
-                                          **Application**        **SMF**
+                                            Application           SMF
 ```
