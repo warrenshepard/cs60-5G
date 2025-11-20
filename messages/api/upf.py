@@ -10,3 +10,4 @@ AI Statement: None.
 
 # CONTROL
 RULE_INSTALL = "RuleInstall"
+RULE_INSTALL_OK = "RuleInstallOk"

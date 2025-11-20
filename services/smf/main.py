@@ -118,7 +118,7 @@ def handle_message(msg):
         dst=formatter.get_src(msg), # send back to src
         msg_type=api.common.ERROR,
         body=reply_body,
-        id=formatter.get_id(msg),
+        id=formatter.get_id(msg)
     )
 
 
