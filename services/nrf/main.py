@@ -20,7 +20,7 @@ Outgoing message types and formats:
 
 import sys
 
-from common import formatter, tcp, logging
+from common import formatter, tcp, logging, config
 from messages import api
 from . import store
 
@@ -116,6 +116,6 @@ if __name__ == "__main__":
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:
-        port = 9000
+        port = config.get_port("nrf")
 
     main(host, port)

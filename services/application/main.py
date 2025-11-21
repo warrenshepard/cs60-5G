@@ -10,7 +10,7 @@ AI Statement: None.
 
 import sys
 
-from common import formatter, tcp, logging
+from common import formatter, tcp, logging, config
 from messages import api
 
 SERVICE_NAME = "application"
@@ -70,5 +70,11 @@ def main(host, port):
 
 if __name__ == "__main__":
     host = "127.0.0.1"
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 9400 # TODO: standardize this across all classes to pull from config
+
+    # TODO: add parseargs to this cuz i don't like this format
+    if len(sys.argv) >= 2:
+        port = int(sys.argv[1])
+    else:
+        port = config.get_port("application")
+
     main(host, port)

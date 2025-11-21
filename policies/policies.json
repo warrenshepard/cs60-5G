@@ -16,5 +16,15 @@
                 "latency_ms": 5
             }
         }
+    },
+    "ports": {
+        "base_station": 8600,
+        "amf": 8610,
+        "smf": 8611,
+        "policy": 8612,
+        "nrf": 8613,
+        "upf_control": 8620,
+        "upf_data": 8621,
+        "application": 8630
     }
 }

@@ -10,7 +10,7 @@ AI Statement: None.
 
 from common import formatter, config, tcp
 from messages import api
-import rules
+from . import rules
 
 SERVICVE_NAME = "upf_control"
 

@@ -3,13 +3,13 @@ Warren Shepard and Nand Patel
 Dartmouth CS60 25F Final Project
 20 Nov 2025
 
-Unit tests for common.config methods.
+Unit tests for common.tcp methods.
 
-This was used to debug common.config.py (and helped catch several bugs).
+This was used to debug common.tcp.py (and helped catch several bugs).
 
 Run with: `pytest tests/unit/common/test_tcp.py`
 
-AI Statement: ChatGPT wrote almost this whole thing (with Piersons permission to do this).
+AI Statement: ChatGPT wrote almost this whole thing (with Piersons permission to do this for unit tests).
     To generate, we described each method that we wanted and what the input and correct output that should
     be tested should be. 
 

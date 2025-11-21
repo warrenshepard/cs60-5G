@@ -5,6 +5,16 @@ Dartmouth CS60 25F Final Project
 
 Main logic for SMF.
 
+                    AMF 
+                     |
+                     |
+                     |
+                    SMF - - - Policy
+                     |
+                     |
+                     |
+                UPF Control
+
 AI Statement: None.
 """
 
@@ -147,6 +157,6 @@ if __name__ == "__main__":
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:
-        port = 9200
+        port = config.get_port("smf")
 
     main(host, port)

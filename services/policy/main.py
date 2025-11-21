@@ -10,7 +10,7 @@ AI Statement: None.
 
 import sys
 
-from common import formatter, tcp, logging
+from common import formatter, tcp, logging, config
 from messages import api
 from . import evaluator
 
@@ -113,6 +113,6 @@ if __name__ == "__main__":
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:
-        port = 9100
+        port = config.get_port("policy")
 
     main(host, port)

@@ -107,7 +107,7 @@ def upf_to_device(upf_sock, device_sock):
 
 
 def main():
-    device_port = config.get_port("device") # TODO: change this so that we can connect with mulitple devices
+    device_port = 8640 # TODO: change this so that we can connect with mulitple devices
     # maybe their connections can be stored in a dictionary?
 
     upf_port = config.get_port("upf")

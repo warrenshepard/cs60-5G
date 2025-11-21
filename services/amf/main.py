@@ -4,8 +4,28 @@ Dartmouth CS60 25F Final Project
 14 Nov 2025
 
 Main logic for AMF.
+                   
+                Base Station
+                     |
+                     |
+                     |
+           HERE --> AMF - - - Policy
+                     |
+                     |
+                     |
+                    SMF
 
-AI Statement: 
+LOGIC:                                                      MESSAGE:
+    if RegistrationRequest recieved:                        (RegistrationRequest <- Base Station)
+        call policy to get the allowed slices               (AllowedSlices -> Policy)
+        register device and store allowed slices
+    
+    if SessionReqeust recieved:                             (SessionRequest <- Base Station)
+        make sure device is registered
+        ask policy if device is allowd on this slice        (Admit -> Policy)
+        ask smf to register session                         ()
+        
+AI Statement: None.
 """
 
 # TODO: verbose logging
@@ -108,7 +128,6 @@ def handle_session_request(request):
     device_id = body["device_id"]
     slice_id = body["slice_id"]
 
-    # TODO: first check if device has been registered
     registered = store.is_registered(device_id)
     if not registered:
         reply_body = {
@@ -219,6 +238,6 @@ if __name__ == "__main__":
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:
-        port = 9001
+        port = config.get_port("amf")
 
     main(host, port)

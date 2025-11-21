@@ -19,14 +19,14 @@ SERVICE_NAME = "upf"
 
 def control_listener(host, port):
     """Listener for the control plane."""
-    logging.log_info(SERVICE_NAME, f"-control listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"control listening on {host}:{port}")
 
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
         # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
-        logging.log_info(SERVICE_NAME, f"-control accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"control accepted connection from {addr}")
 
         msg = tcp.recv_json(client_sock)
         if msg is not None:
@@ -38,14 +38,14 @@ def control_listener(host, port):
 
 def data_listener(host, port):
     """Listener for the data plane."""
-    logging.log_info(SERVICE_NAME, f"-data listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"data listening on {host}:{port}")
 
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
         # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
-        logging.log_info(SERVICE_NAME, f"-data accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"data accepted connection from {addr}")
 
         msg = tcp.recv_json(client_sock)
         if msg is not None:
@@ -59,8 +59,8 @@ def main():
     host = "127.0.0.1"
 
     # TODO: (IMPORTANT) put these in the config then use the method to get them
-    control_port = 9300
-    data_port = 9301
+    control_port = config.get_port("upf_control")
+    data_port = config.get_port("upf_data")
 
     control_thread = threading.Thread(
         target=control_listener,
@@ -77,7 +77,7 @@ def main():
     control_thread.start()
     data_thread.start()
 
-    logging.log_info(SERVICE_NAME, " started (control + data)")
+    logging.log_info(SERVICE_NAME, "started (control + data)")
 
     control_thread.join()
     data_thread.join()
