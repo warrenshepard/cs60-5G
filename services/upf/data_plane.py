@@ -5,6 +5,9 @@ Dartmouth CS60 25F Final Project
 
 Data plane for UPF.
 
+TODO: would be cool and funny af to keep track of how much data each device uses
+so that they can be charged bc this is all about money!
+
 AI Statement: None.
 """
 
