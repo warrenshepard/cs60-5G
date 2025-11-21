@@ -89,22 +89,37 @@ def handle_registration_request(request):
     # get allowed slices from policy service
     # TODO: error handling if the device is not in the policy
     policy_reply = call_policy(
-        api.policy.ALLOWED_SLICES,
+        api.policy.GET_ALLOWED_SLICES,
         {"device_id": device_id}
     )
 
-    # TODO: add some wrapper to ensure the correct message was recieved
-    allowed_slices = policy_reply["body"]["allowed_slices"]
+    # check for any errors
+    policy_reply_type = formatter.get_type(policy_reply)
 
-    # register device
-    store.add_device(device_id, allowed_slices)
+    if policy_reply_type == api.common.ERROR:
+        # then the device cannot be registered
+        error = policy_reply["body"]["error"]
+        reply_body = {
+            "registered": False,
+            "device_id": device_id,
+            "allowed_slices": None,
+            "error": error
+        }
+    else:
+        # then we can successfully register the device
+        # TODO: add some wrapper to ensure the correct message was recieved
+        allowed_slices = policy_reply["body"]["allowed_slices"]
 
-    # format reply
-    reply_body = {
-        "registered": True,
-        "device_id": device_id,
-        "allowed_slices": allowed_slices,
-    }
+        # register device
+        store.add_device(device_id, allowed_slices)
+
+        # format reply
+        reply_body = {
+            "registered": True,
+            "device_id": device_id,
+            "allowed_slices": allowed_slices,
+        }
+        
     return formatter.format_message(
         src=SERVICVE_NAME,
         dst=src,

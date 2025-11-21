@@ -27,18 +27,33 @@ def handle_message(msg):
     # GetAllowedSlices: {device_id}
     if msg_type == api.policy.GET_ALLOWED_SLICES:
         device_id = body["device_id"]
-        allowed_slices = evaluator.get_allowed_slices(device_id)
+
+        try:
+            allowed_slices = evaluator.get_allowed_slices(device_id)
+        except ValueError:
+            # the device is not subscribed to the 5G carrier.
+            reply_body = {"error": f"device {device_id} not subscribed"}
+            return formatter.format_message(
+                src=SERVICVE_NAME,
+                dst=src,
+                msg_type=api.common.ERROR,
+                body=reply_body,
+                id=id
+            )
 
         reply_body = {
             "device_id": device_id,
             "allowed_slices": allowed_slices,
         }
+
+        logging.log_verbose(SERVICVE_NAME, f"reply body: {reply_body}")
+
         return formatter.format_message(
             src=SERVICVE_NAME,
             dst=src,
             msg_type=api.policy.ALLOWED_SLICES,
             body=reply_body,
-            id=id,
+            id=id
         )
     
     # Admit: {device_id, slice_id}
@@ -50,8 +65,9 @@ def handle_message(msg):
         reply_body = {
             "device_id": device_id,
             "slice_id": slice_id,
-            "allowed": allowed_slices,
+            "allowed_slices": allowed_slices,
         }
+
         return formatter.format_message(
             src=SERVICVE_NAME,
             dst=src,
@@ -79,6 +95,7 @@ def handle_message(msg):
     
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICVE_NAME, f"recieved unknown message type: {msg_type}")
     return formatter.format_message(
         src=SERVICVE_NAME,
         dst=src,

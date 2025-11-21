@@ -23,14 +23,13 @@ def format_message(src, dst, msg_type, body, id=None):
     """
     # assign a uuid
     if id is None:
-        id = str(uuid.uuid5())
+        id = str(uuid.uuid4())
 
     header = {
         "src": src,
         "dst": dst,
         "type": msg_type,
         "id": id,
-        "time": time.time(),
     }
 
     return {"header": header, "body": body}

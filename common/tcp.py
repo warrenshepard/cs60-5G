@@ -5,7 +5,8 @@ Dartmouth CS60 25F Final Project
 
 Common TCP functions for sending/recieving JSON objects.
 
-AI Statement: used ChatGPT to figure out how the json library worked.
+AI Statement: Used ChatGPT to figure out how the json library worked.
+    Also used for debugging recv_json() for an OSError.
 """
 
 import json
@@ -46,7 +47,12 @@ def recv_json(sock):
     """
     buffer = []
     while True:
-        chunk = sock.recv(1)
+        try:
+            chunk = sock.recv(1)
+        except OSError:
+            # if socket was closed (ex: from another thread) or invalid
+            return None
+        
         if not chunk:
             break
         if chunk == b"\n":  # signals end of JSON object

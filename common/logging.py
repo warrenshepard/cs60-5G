@@ -25,6 +25,10 @@ def log_error(service, msg):
     "Log an error"
     log(service, "ERROR", msg)
 
+def log_verbose(service, msg):
+    "Log verbose (can be turned on and off)"
+    log(service, "VERBOSE", msg)
+
 # log_info and log_error should only be used in main method of each service?
 
 # TODO: add log_verbose and a switch to turn it on/off

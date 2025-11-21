@@ -5,15 +5,26 @@ Dartmouth CS60 25F Final Project
 
 Functions to directly evaluate against the configured policies
 
-AI Statement: None.
+AI Statement: asked ChatGPT what error would be appropriate to raise in get_allowed_slices
+    if the device is not subscribed to the 5G carrier.
 """
 
 from common.config import load_policies
+from common import logging
 
+#TODO: fix error if device_id is not in the devices config...
 def get_allowed_slices(device_id):
     """Returns list of allowed slice IDs for given device."""
     policies = load_policies()
-    device_config = policies.get("device_id, {}")
+
+    logging.log_verbose("policy", f"policies dict {policies}")
+
+    devices = policies.get("devices", {})
+    device_config = devices.get(device_id, None)
+    
+    if device_config is None:
+        raise ValueError(f"device {device_id} not subscribed.")
+
     return device_config.get("allowed_slices", [])
 
 

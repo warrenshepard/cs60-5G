@@ -12,6 +12,8 @@ A 5G Network has three primary components:
     - Access Management Function (AMF)
     - Session Management Function (SMF)
     - User Plane Function (UPF)
+    - Policy services
+    - Network Registry Function (NRF)
 
 For simplicity, all messages sent between services, the base station, and the device are sent in json format over TCP. As soon as they are recieved, they are converted to dictionaries for easy readability. In reality, data plane UFP messages would be sent as IP packets. We chose not to do that since the scope of our project was already very big and we wanted to keep things simple and stick to our goal of learning/showing how a 5G network works and hilighting some components that we think are cool.
 
@@ -41,21 +43,23 @@ To run a specific test file, run
 pytest path/to/file
 ```
 
+Note that the file `./pytest.ini` is to configure pytest (specifically so that the imports work correctly).
+
 ## Repository Structure
 
-### common
+### ./common
 Common functions used by multiple components of the repository. This includes:
 
-### messages
+### ./messages
 All message types and an API which defines supported messages. See the README.md there for information on the purpose and structure of each message.
 
-### policies
+### ./policies
 The policies (i.e. settings and buisness configurations) of the 5G netowrk. See the README.md there for more info.
 
-### services
+### ./services
 All the services in the core 5G network, as well as the base station (which we put in the services section becuase it does not have any hardware associated with it, so it acts in a similar manner as a service).
 
-### tests
+### ./tests
 Includes unit tests and integration tests.
 
 
