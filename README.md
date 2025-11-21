@@ -36,6 +36,10 @@ To run all tests, run
 pytest
 ```
 
+To run a specific test file, run
+```bash
+pytest path/to/file
+```
 
 ## Repository Structure
 
