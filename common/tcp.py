@@ -19,7 +19,7 @@ def connect(host, port):
     return sock
 
 
-# note: may want to add a backlog here to limit the number of connections that
+# NOTE: may want to add a backlog here to limit the number of connections that
 # can be "waiting in line" at any given moment
 def listen(host, port):
     """Binds and listens on host:port and returns the listening socket."""

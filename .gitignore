@@ -1,0 +1,9 @@
+# pycache
+__pycache__/
+*.pyc
+
+# macOS junk
+.DS_Store
+
+# pytest cache
+.pytest_cache/

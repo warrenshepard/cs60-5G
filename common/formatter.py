@@ -12,8 +12,6 @@ whereas this is more for formatting the headers.
 AI Statement: None
 """
 
-# TODO: rename this to envelope
-
 import time
 import uuid
 

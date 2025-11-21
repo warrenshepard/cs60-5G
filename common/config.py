@@ -27,8 +27,8 @@ def get_service_config(service, path=POLICIES_PATH):
     return services.get(service, {})
 
 
-def get_port(service):
+def get_port(service, path=POLICIES_PATH):
     """Gets the port for a given service."""
-    policies = load_policies()
+    policies = load_policies(path)
     ports = policies.get("ports", {})
     return ports.get(service)
