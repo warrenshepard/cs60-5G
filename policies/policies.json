@@ -1,8 +1,8 @@
 {
     "devices": {
         "001": { "allowed_slices": ["eMBB", "URLLC"] },
-        "002": { "allowed_slices": ["eMBB"] },
-        "003": { "allowed_slices": ["eMBB"] }
+        "002": { "allowed_slices": ["URLLC"] },
+        "003": { "allowed_slices": ["URLLC"] }
     },
     "slices": {
         "eMBB": {

@@ -1,0 +1,509 @@
+[device] [VERBOSE] [device -> base_station (UnknownType)] {"header": {"src": "device", "dst": "base_station", "type": "UnknownType", "id": "de0d0f33-a751-4f91-830e-1b117185a8f5"}, "body": {"device_id": "001"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57454).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57454)
+[device] [VERBOSE] [device -> base_station (UnknownType)] {"header": {"src": "device", "dst": "base_station", "type": "UnknownType", "id": "f9600af9-9880-4142-879c-dccf59780ce6"}, "body": {"device_id": "001"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57455).
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "02d6ac22-72cf-43a4-a9f0-b3b6832cc76b"}, "body": {"name": "amf"}}
+[base_station] [INFO] handling new device from ('127.0.0.1', 57455)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "d62157ef-fa49-4657-b955-2a7d98432189"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57456)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "02d6ac22-72cf-43a4-a9f0-b3b6832cc76b"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57457)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "d62157ef-fa49-4657-b955-2a7d98432189"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57458)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "51fb863d-66fc-43b7-86de-9031318da63b"}, "body": {"name": "upf_data"}}
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "51fb863d-66fc-43b7-86de-9031318da63b"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "67ba92ba-74b2-40e8-997e-a4d21da9debb"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57459)
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "67ba92ba-74b2-40e8-997e-a4d21da9debb"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] starting relaying threads for device.
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57460)
+[base_station] [INFO] starting relaying threads for device.
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57461)
+[base_station] [ERROR] unsupported message type from device: UnknownType
+[base_station] [VERBOSE] [base_station -> device (Error)] {"header": {"src": "base_station", "dst": "device", "type": "Error", "id": "de0d0f33-a751-4f91-830e-1b117185a8f5"}, "body": {"error": "unknown message type: UnknownType"}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[amf] [INFO] client closed connection.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57463)
+[base_station] [INFO] finished handling device ('127.0.0.1', 57454)
+[amf] [INFO] accepted connection from ('127.0.0.1', 57462)
+[base_station] [ERROR] unsupported message type from device: UnknownType
+[base_station] [VERBOSE] [base_station -> device (Error)] {"header": {"src": "base_station", "dst": "device", "type": "Error", "id": "f9600af9-9880-4142-879c-dccf59780ce6"}, "body": {"error": "unknown message type: UnknownType"}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57455)
+[amf] [INFO] client closed connection.
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "001"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57464).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57464)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57465)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "7c7b4753-71e4-4b3a-87fd-6d94f5540a1e"}, "body": {"name": "amf"}}
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "7c7b4753-71e4-4b3a-87fd-6d94f5540a1e"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57466)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "93cd3aef-e431-45d2-8c7e-0621b62e2dcf"}, "body": {"name": "upf_data"}}
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "93cd3aef-e431-45d2-8c7e-0621b62e2dcf"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57467)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57468)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message RegistrationRequest to AMF
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "001"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57469)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "784d21e9-4903-4b87-bd1f-f07d905b035b"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "784d21e9-4903-4b87-bd1f-f07d905b035b"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (GetAllowedSlices)] {"header": {"src": "amf", "dst": "policy", "type": "GetAllowedSlices", "id": "1c53d327-3b7a-4589-95c9-77057175772f"}, "body": {"device_id": "001"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57470)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] reply body: {'device_id': '001', 'allowed_slices': ['eMBB', 'URLLC']}
+[policy] [VERBOSE] [policy -> amf (AllowedSlices)] {"header": {"src": "policy", "dst": "amf", "type": "AllowedSlices", "id": "1c53d327-3b7a-4589-95c9-77057175772f"}, "body": {"device_id": "001", "allowed_slices": ["eMBB", "URLLC"]}}
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": true, "device_id": "001", "allowed_slices": ["eMBB", "URLLC"]}}
+[base_station] [INFO] forwarding control message of type RegistrationResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": true, "device_id": "001", "allowed_slices": ["eMBB", "URLLC"]}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57464)
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57471).
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "067"}}
+[base_station] [INFO] handling new device from ('127.0.0.1', 57471)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "d7453868-44ec-483a-8672-de81ca95b8ce"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57472)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "d7453868-44ec-483a-8672-de81ca95b8ce"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "c711331e-af34-4573-89af-5f49ec1dd6e2"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57473)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "c711331e-af34-4573-89af-5f49ec1dd6e2"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57474)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57475)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message RegistrationRequest to AMF
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "067"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57476)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "70959bb6-9fc4-4a0d-92f4-7627cc695c30"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "70959bb6-9fc4-4a0d-92f4-7627cc695c30"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57477)
+[amf] [VERBOSE] [amf -> policy (GetAllowedSlices)] {"header": {"src": "amf", "dst": "policy", "type": "GetAllowedSlices", "id": "266a4872-e8f3-47d3-af56-de30dca8249c"}, "body": {"device_id": "067"}}
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [ERROR] device 067 not subscribed
+[policy] [VERBOSE] [policy -> amf (Error)] {"header": {"src": "policy", "dst": "amf", "type": "Error", "id": "266a4872-e8f3-47d3-af56-de30dca8249c"}, "body": {"error": "device 067 not subscribed"}}
+[amf] [ERROR] revieced error from policy: device 067 not subscribed
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": false, "device_id": "067", "allowed_slices": null, "error": "device 067 not subscribed"}}
+[base_station] [INFO] forwarding control message of type RegistrationResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": false, "device_id": "067", "allowed_slices": null, "error": "device 067 not subscribed"}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57471)
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57478).
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[base_station] [INFO] handling new device from ('127.0.0.1', 57478)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57479)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "522e74a9-c755-46c9-a7b8-333a5c84e5dd"}, "body": {"name": "amf"}}
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "522e74a9-c755-46c9-a7b8-333a5c84e5dd"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "7e21e703-6067-4f52-aa89-12e82ef99c66"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57480)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "7e21e703-6067-4f52-aa89-12e82ef99c66"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57481)
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57482)
+[base_station] [INFO] starting relaying threads for device.
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57483)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "abe72e9b-8e4f-44d2-8c73-c10a0fc9d64b"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "abe72e9b-8e4f-44d2-8c73-c10a0fc9d64b"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (Admit)] {"header": {"src": "amf", "dst": "policy", "type": "Admit", "id": "ebb45ad9-9512-47e2-a41e-e1ec91ba8bc1"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57484)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] [policy -> amf (AdmitOk)] {"header": {"src": "policy", "dst": "amf", "type": "AdmitOk", "id": "ebb45ad9-9512-47e2-a41e-e1ec91ba8bc1"}, "body": {"admit": true, "device_id": "001", "slice_id": "eMBB"}}
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "742a5eb3-363a-4a09-b6bf-591a2a0fbf90"}, "body": {"name": "smf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57485)
+[nrf] [ERROR] entry of name smf not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "742a5eb3-363a-4a09-b6bf-591a2a0fbf90"}, "body": {"found": true, "host": "127.0.0.1", "port": 8611}}
+[amf] [VERBOSE] [amf -> smf (CreateSession)] {"header": {"src": "amf", "dst": "smf", "type": "CreateSession", "id": "0488a089-e930-4132-8634-32a2964c3a2d"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[smf] [INFO] accepted connection from ('127.0.0.1', 57486)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57487)
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "8c838424-0380-4c70-bf5f-3e1daac19218"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "8c838424-0380-4c70-bf5f-3e1daac19218"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[smf] [VERBOSE] [smf -> policy (GetProfile)] {"header": {"src": "smf", "dst": "policy", "type": "GetProfile", "id": "3c1079f6-b61d-4c34-8b49-f28c79279dff"}, "body": {"slice_id": "eMBB"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57488)
+[policy] [VERBOSE] [policy -> smf (Profile)] {"header": {"src": "policy", "dst": "smf", "type": "Profile", "id": "3c1079f6-b61d-4c34-8b49-f28c79279dff"}, "body": {"slice_id": "eMBB", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57489)
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "a947b1e9-86d0-4d29-a884-e9d8d0a62af6"}, "body": {"name": "upf_control"}}
+[nrf] [ERROR] entry of name upf_control not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "a947b1e9-86d0-4d29-a884-e9d8d0a62af6"}, "body": {"found": true, "host": "127.0.0.1", "port": 8620}}
+[smf] [VERBOSE] [smf -> upf_control (RuleInstall)] {"header": {"src": "smf", "dst": "upf_control", "type": "RuleInstall", "id": "6de6784b-32b5-47e9-9a4a-97a557083877"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba", "ip_addr": "10.0.0.7", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[upf] [INFO] control accepted connection from ('127.0.0.1', 57490)
+[upf_control] [VERBOSE] [upf_control -> smf (RuleInstallOk)] {"header": {"src": "upf_control", "dst": "smf", "type": "RuleInstallOk", "id": "6de6784b-32b5-47e9-9a4a-97a557083877"}, "body": {"session_id": "001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba", "ok": true}}
+[smf] [VERBOSE] CreateSession reply body: {'device_id': '001', 'slice_id': 'eMBB', 'session_id': '001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba', 'ip_addr': '10.0.0.7', 'profile': {'rate_mbps': 50, 'latency_ms': 20}, 'admitted': True}
+[smf] [VERBOSE] [smf -> amf (CreateSessionOk)] {"header": {"src": "smf", "dst": "amf", "type": "CreateSessionOk", "id": "0488a089-e930-4132-8634-32a2964c3a2d"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba", "ip_addr": "10.0.0.7", "profile": {"rate_mbps": 50, "latency_ms": 20}, "admitted": true}}
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba", "ip_addr": "10.0.0.7"}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-5f174115-ef0b-4ad4-863a-96331be8a1ba", "ip_addr": "10.0.0.7"}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57478)
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57491).
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "003", "slice_id": "eMBB"}}
+[base_station] [INFO] handling new device from ('127.0.0.1', 57491)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57492)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "033af866-7428-425c-8384-815d3748d7fe"}, "body": {"name": "amf"}}
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "033af866-7428-425c-8384-815d3748d7fe"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "f5259418-941d-4117-9053-bd1fa419dc5a"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57493)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "f5259418-941d-4117-9053-bd1fa419dc5a"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57494)
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57495)
+[base_station] [INFO] starting relaying threads for device.
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "003", "slice_id": "eMBB"}}
+[amf] [ERROR] device 003 not registered.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "003", "slice_id": "eMBB", "additional": "device not registered."}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "003", "slice_id": "eMBB", "additional": "device not registered."}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57491)
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "idontbelong", "slice_id": "eMBB"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57496).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57496)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "cd504361-eb17-4c38-a091-54a3b95a9cf9"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57497)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "cd504361-eb17-4c38-a091-54a3b95a9cf9"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "41d56329-e218-4531-ac31-efc40e3e2b73"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57498)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "41d56329-e218-4531-ac31-efc40e3e2b73"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57499)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57500)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "idontbelong", "slice_id": "eMBB"}}
+[amf] [ERROR] device idontbelong not registered.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "idontbelong", "slice_id": "eMBB", "additional": "device not registered."}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "idontbelong", "slice_id": "eMBB", "additional": "device not registered."}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57496)
+[amf] [INFO] client closed connection.
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "idontexist"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57501).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57501)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "2506082e-be56-4e12-be81-993dd535ad10"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57502)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "2506082e-be56-4e12-be81-993dd535ad10"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "03da7f58-44c2-43dc-9305-b8fffb1e6cbe"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57503)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "03da7f58-44c2-43dc-9305-b8fffb1e6cbe"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57504)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57505)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "idontexist"}}
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "6c941ff1-b78b-4aeb-a379-6b17645553f0"}, "body": {"name": "policy"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57506)
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "6c941ff1-b78b-4aeb-a379-6b17645553f0"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (Admit)] {"header": {"src": "amf", "dst": "policy", "type": "Admit", "id": "5e6ae31a-182b-4892-9b03-1d9c7f0089c7"}, "body": {"device_id": "001", "slice_id": "idontexist"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57507)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] [policy -> amf (AdmitOk)] {"header": {"src": "policy", "dst": "amf", "type": "AdmitOk", "id": "5e6ae31a-182b-4892-9b03-1d9c7f0089c7"}, "body": {"admit": false, "device_id": "001", "slice_id": "idontexist"}}
+[amf] [ERROR] slice_id idontexist not allowed or availible for device
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "001", "slice_id": "idontexist", "additional": "slice not allowed or availible for device."}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "001", "slice_id": "idontexist", "additional": "slice not allowed or availible for device."}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57501)
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "002"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57508).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57508)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57509)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "d9bd7df2-b005-4576-a106-d895596282f2"}, "body": {"name": "amf"}}
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "d9bd7df2-b005-4576-a106-d895596282f2"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57510)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "3df84e6e-fc72-4652-9f1a-02e78476e639"}, "body": {"name": "upf_data"}}
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "3df84e6e-fc72-4652-9f1a-02e78476e639"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57511)
+[base_station] [INFO] starting relaying threads for device.
+[base_station] [INFO] device_to_core relaying started.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57512)
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message RegistrationRequest to AMF
+[device] [VERBOSE] [device -> base_station (RegistrationRequest)] {"header": {"src": "device", "dst": "base_station", "type": "RegistrationRequest", "id": "test"}, "body": {"device_id": "002"}}
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "fea1c191-1c96-4a3c-aca5-33559621fc56"}, "body": {"name": "policy"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57513)
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "fea1c191-1c96-4a3c-aca5-33559621fc56"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (GetAllowedSlices)] {"header": {"src": "amf", "dst": "policy", "type": "GetAllowedSlices", "id": "f5c1697c-b98d-4064-a9fb-576d550d4402"}, "body": {"device_id": "002"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57514)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] reply body: {'device_id': '002', 'allowed_slices': ['eMBB']}
+[policy] [VERBOSE] [policy -> amf (AllowedSlices)] {"header": {"src": "policy", "dst": "amf", "type": "AllowedSlices", "id": "f5c1697c-b98d-4064-a9fb-576d550d4402"}, "body": {"device_id": "002", "allowed_slices": ["eMBB"]}}
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": true, "device_id": "002", "allowed_slices": ["eMBB"]}}
+[base_station] [INFO] forwarding control message of type RegistrationResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (RegistrationResponse)] {"header": {"src": "amf", "dst": "device", "type": "RegistrationResponse", "id": "test"}, "body": {"registered": true, "device_id": "002", "allowed_slices": ["eMBB"]}}
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "002", "slice_id": "URLLC"}}
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "002", "slice_id": "URLLC"}}
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "0b0b32af-d375-4e92-93e3-c1919b86b75f"}, "body": {"name": "policy"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57515)
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "0b0b32af-d375-4e92-93e3-c1919b86b75f"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (Admit)] {"header": {"src": "amf", "dst": "policy", "type": "Admit", "id": "e4da4643-1397-49b5-bd0d-eb6d4088dbad"}, "body": {"device_id": "002", "slice_id": "URLLC"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57516)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] [policy -> amf (AdmitOk)] {"header": {"src": "policy", "dst": "amf", "type": "AdmitOk", "id": "e4da4643-1397-49b5-bd0d-eb6d4088dbad"}, "body": {"admit": false, "device_id": "002", "slice_id": "URLLC"}}
+[amf] [ERROR] slice_id URLLC not allowed or availible for device
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "002", "slice_id": "URLLC", "additional": "slice not allowed or availible for device."}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": false, "device_id": "002", "slice_id": "URLLC", "additional": "slice not allowed or availible for device."}}
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[amf] [INFO] client closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57508)
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57517).
+[base_station] [INFO] handling new device from ('127.0.0.1', 57517)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "0b131e9e-68b4-4ef8-889c-1fbfd3c5f06d"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57518)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "0b131e9e-68b4-4ef8-889c-1fbfd3c5f06d"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "3fb481d2-6d03-4b8f-a44f-01c93c6d49f0"}, "body": {"name": "upf_data"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57519)
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "3fb481d2-6d03-4b8f-a44f-01c93c6d49f0"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57520)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57521)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57522)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "f2d20166-b999-4e7d-9985-1c6c0644feab"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "f2d20166-b999-4e7d-9985-1c6c0644feab"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[amf] [VERBOSE] [amf -> policy (Admit)] {"header": {"src": "amf", "dst": "policy", "type": "Admit", "id": "57c6a308-6c53-4575-af2d-8725c5b6221f"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57523)
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] [policy -> amf (AdmitOk)] {"header": {"src": "policy", "dst": "amf", "type": "AdmitOk", "id": "57c6a308-6c53-4575-af2d-8725c5b6221f"}, "body": {"admit": true, "device_id": "001", "slice_id": "eMBB"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57524)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "d14998e3-92f7-4cd0-84f8-08e45476a324"}, "body": {"name": "smf"}}
+[nrf] [ERROR] entry of name smf not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "d14998e3-92f7-4cd0-84f8-08e45476a324"}, "body": {"found": true, "host": "127.0.0.1", "port": 8611}}
+[amf] [VERBOSE] [amf -> smf (CreateSession)] {"header": {"src": "amf", "dst": "smf", "type": "CreateSession", "id": "94c52f77-b57e-439b-9ab8-16ad73d6d1c9"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[smf] [INFO] accepted connection from ('127.0.0.1', 57525)
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "c8b8c30d-8c5b-4050-96e2-261a93830fc0"}, "body": {"name": "policy"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57526)
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "c8b8c30d-8c5b-4050-96e2-261a93830fc0"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[smf] [VERBOSE] [smf -> policy (GetProfile)] {"header": {"src": "smf", "dst": "policy", "type": "GetProfile", "id": "4a4b6bc7-2a95-4212-877e-0fa911fae4e7"}, "body": {"slice_id": "eMBB"}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57527)
+[policy] [VERBOSE] [policy -> smf (Profile)] {"header": {"src": "policy", "dst": "smf", "type": "Profile", "id": "4a4b6bc7-2a95-4212-877e-0fa911fae4e7"}, "body": {"slice_id": "eMBB", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57528)
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "182e4928-f0c5-4e30-894d-8fde3b4a2fa4"}, "body": {"name": "upf_control"}}
+[nrf] [ERROR] entry of name upf_control not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "182e4928-f0c5-4e30-894d-8fde3b4a2fa4"}, "body": {"found": true, "host": "127.0.0.1", "port": 8620}}
+[upf] [INFO] control accepted connection from ('127.0.0.1', 57529)
+[smf] [VERBOSE] [smf -> upf_control (RuleInstall)] {"header": {"src": "smf", "dst": "upf_control", "type": "RuleInstall", "id": "5934301b-8dfa-4244-947a-8a7453f45c61"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "ip_addr": "10.0.0.8", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[upf_control] [VERBOSE] [upf_control -> smf (RuleInstallOk)] {"header": {"src": "upf_control", "dst": "smf", "type": "RuleInstallOk", "id": "5934301b-8dfa-4244-947a-8a7453f45c61"}, "body": {"session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "ok": true}}
+[smf] [VERBOSE] CreateSession reply body: {'device_id': '001', 'slice_id': 'eMBB', 'session_id': '001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033', 'ip_addr': '10.0.0.8', 'profile': {'rate_mbps': 50, 'latency_ms': 20}, 'admitted': True}
+[smf] [VERBOSE] [smf -> amf (CreateSessionOk)] {"header": {"src": "smf", "dst": "amf", "type": "CreateSessionOk", "id": "94c52f77-b57e-439b-9ab8-16ad73d6d1c9"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "ip_addr": "10.0.0.8", "profile": {"rate_mbps": 50, "latency_ms": 20}, "admitted": true}}
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "ip_addr": "10.0.0.8"}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "ip_addr": "10.0.0.8"}}
+[device] [VERBOSE] [device -> base_station (UserDataUp)] {"header": {"src": "device", "dst": "base_station", "type": "UserDataUp", "id": "test"}, "body": {"device_id": "001", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "request_type": "EchoRequest", "payload": "test123"}}
+[base_station] [INFO] forwarding data plane message UserDataUp to UPF
+[device] [VERBOSE] [device -> base_station (UserDataUp)] {"header": {"src": "device", "dst": "base_station", "type": "UserDataUp", "id": "test"}, "body": {"device_id": "001", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "request_type": "EchoRequest", "payload": "test123"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57530)
+[upf_control] [VERBOSE] [upf_control -> nrf (Lookup)] {"header": {"src": "upf_control", "dst": "nrf", "type": "Lookup", "id": "5557a886-ccdd-4ce7-92f9-a02b68e6cc83"}, "body": {"name": "application"}}
+[nrf] [ERROR] entry of name application not found.
+[nrf] [VERBOSE] [nrf -> upf_control (LookupResult)] {"header": {"src": "nrf", "dst": "upf_control", "type": "LookupResult", "id": "5557a886-ccdd-4ce7-92f9-a02b68e6cc83"}, "body": {"found": true, "host": "127.0.0.1", "port": 8630}}
+[upf_control] [VERBOSE] [upf_control -> application (EchoRequest)] {"header": {"src": "upf_control", "dst": "application", "type": "EchoRequest", "id": "7e66910c-a0b6-4bd2-9db8-2f98b206b1ce"}, "body": {"device_id": "001", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033", "request_type": "EchoRequest", "payload": "test123"}}
+[application] [INFO] accepted connection from ('127.0.0.1', 57531)
+[application] [VERBOSE] [application -> upf_control (EchoReply)] {"header": {"src": "application", "dst": "upf_control", "type": "EchoReply", "id": "7e66910c-a0b6-4bd2-9db8-2f98b206b1ce"}, "body": {"payload": "APPLICATION ECHO: test123"}}
+[upf_control] [VERBOSE] [upf_control -> device (UserDataDown)] {"header": {"src": "upf_control", "dst": "device", "type": "UserDataDown", "id": "test"}, "body": {"payload": "APPLICATION ECHO: test123", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033"}}
+[base_station] [INFO] forwarding data message of type UserDataDown from UPF to device.
+[upf_control] [VERBOSE] [upf_control -> device (UserDataDown)] {"header": {"src": "upf_control", "dst": "device", "type": "UserDataDown", "id": "test"}, "body": {"payload": "APPLICATION ECHO: test123", "session_id": "001-eMBB-fbb11a19-9239-4b50-a72f-20b9c2aec033"}}
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57517)
+[amf] [INFO] client closed connection.
+[base_station] [INFO] accepted device connection from ('127.0.0.1', 57532).
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[base_station] [INFO] handling new device from ('127.0.0.1', 57532)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "17b4c950-01d0-4d60-b211-cc14a1435d05"}, "body": {"name": "amf"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57533)
+[nrf] [ERROR] entry of name amf not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "17b4c950-01d0-4d60-b211-cc14a1435d05"}, "body": {"found": true, "host": "127.0.0.1", "port": 8610}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57534)
+[base_station] [VERBOSE] [base_station -> nrf (Lookup)] {"header": {"src": "base_station", "dst": "nrf", "type": "Lookup", "id": "28b268ad-fe5b-4785-bf4b-1a3f1fa5c75d"}, "body": {"name": "upf_data"}}
+[nrf] [ERROR] entry of name upf_data not found.
+[nrf] [VERBOSE] [nrf -> base_station (LookupResult)] {"header": {"src": "nrf", "dst": "base_station", "type": "LookupResult", "id": "28b268ad-fe5b-4785-bf4b-1a3f1fa5c75d"}, "body": {"found": true, "host": "127.0.0.1", "port": 8621}}
+[base_station] [INFO] connecting to AMF on 127.0.0.1:8610.
+[base_station] [INFO] connecting to UPF on 127.0.0.1:8621.
+[amf] [INFO] accepted connection from ('127.0.0.1', 57535)
+[base_station] [INFO] starting relaying threads for device.
+[upf] [INFO] data accepted connection from ('127.0.0.1', 57536)
+[base_station] [INFO] device_to_core relaying started.
+[base_station] [INFO] amf_to_device relaying started.
+[base_station] [INFO] upf_to_device relaying started.
+[base_station] [INFO] forwarding control plane message SessionRequest to AMF
+[device] [VERBOSE] [device -> base_station (SessionRequest)] {"header": {"src": "device", "dst": "base_station", "type": "SessionRequest", "id": "test"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57537)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "3fb0062b-9bc0-4f7b-8202-a872ca6c73b0"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "3fb0062b-9bc0-4f7b-8202-a872ca6c73b0"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57538)
+[amf] [VERBOSE] [amf -> policy (Admit)] {"header": {"src": "amf", "dst": "policy", "type": "Admit", "id": "d8f1617c-15fa-433c-a03d-08a128178c55"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[policy] [VERBOSE] policies dict {'devices': {'001': {'allowed_slices': ['eMBB', 'URLLC']}, '002': {'allowed_slices': ['eMBB']}, '003': {'allowed_slices': ['eMBB']}}, 'slices': {'eMBB': {'profile': {'rate_mbps': 50, 'latency_ms': 20}}, 'URLLC': {'profile': {'rate_mbps': 5, 'latency_ms': 5}}}, 'ports': {'base_station': 8600, 'amf': 8610, 'smf': 8611, 'policy': 8612, 'nrf': 8613, 'upf_control': 8620, 'upf_data': 8621, 'application': 8630}, 'services': {'application': {'safe': True}}}
+[policy] [VERBOSE] [policy -> amf (AdmitOk)] {"header": {"src": "policy", "dst": "amf", "type": "AdmitOk", "id": "d8f1617c-15fa-433c-a03d-08a128178c55"}, "body": {"admit": true, "device_id": "001", "slice_id": "eMBB"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57539)
+[amf] [VERBOSE] [amf -> nrf (Lookup)] {"header": {"src": "amf", "dst": "nrf", "type": "Lookup", "id": "7f729367-9028-428d-8777-48158c52e293"}, "body": {"name": "smf"}}
+[nrf] [ERROR] entry of name smf not found.
+[nrf] [VERBOSE] [nrf -> amf (LookupResult)] {"header": {"src": "nrf", "dst": "amf", "type": "LookupResult", "id": "7f729367-9028-428d-8777-48158c52e293"}, "body": {"found": true, "host": "127.0.0.1", "port": 8611}}
+[amf] [VERBOSE] [amf -> smf (CreateSession)] {"header": {"src": "amf", "dst": "smf", "type": "CreateSession", "id": "dd15ffdf-a23e-43af-abba-8de2d28a61c4"}, "body": {"device_id": "001", "slice_id": "eMBB"}}
+[smf] [INFO] accepted connection from ('127.0.0.1', 57540)
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57541)
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "b71e9966-75a8-4634-a095-17f05cb24eb7"}, "body": {"name": "policy"}}
+[nrf] [ERROR] entry of name policy not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "b71e9966-75a8-4634-a095-17f05cb24eb7"}, "body": {"found": true, "host": "127.0.0.1", "port": 8612}}
+[policy] [INFO] accepted connection from ('127.0.0.1', 57542)
+[smf] [VERBOSE] [smf -> policy (GetProfile)] {"header": {"src": "smf", "dst": "policy", "type": "GetProfile", "id": "4e8d2c46-127a-4691-b0c7-daa952b2703a"}, "body": {"slice_id": "eMBB"}}
+[policy] [VERBOSE] [policy -> smf (Profile)] {"header": {"src": "policy", "dst": "smf", "type": "Profile", "id": "4e8d2c46-127a-4691-b0c7-daa952b2703a"}, "body": {"slice_id": "eMBB", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[smf] [VERBOSE] [smf -> nrf (Lookup)] {"header": {"src": "smf", "dst": "nrf", "type": "Lookup", "id": "20ce5a0a-b6ac-402c-b4d0-a416084a0264"}, "body": {"name": "upf_control"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57543)
+[nrf] [ERROR] entry of name upf_control not found.
+[nrf] [VERBOSE] [nrf -> smf (LookupResult)] {"header": {"src": "nrf", "dst": "smf", "type": "LookupResult", "id": "20ce5a0a-b6ac-402c-b4d0-a416084a0264"}, "body": {"found": true, "host": "127.0.0.1", "port": 8620}}
+[smf] [VERBOSE] [smf -> upf_control (RuleInstall)] {"header": {"src": "smf", "dst": "upf_control", "type": "RuleInstall", "id": "05d020e1-af1e-4332-8074-b7d3654e36ee"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "ip_addr": "10.0.0.9", "profile": {"rate_mbps": 50, "latency_ms": 20}}}
+[upf] [INFO] control accepted connection from ('127.0.0.1', 57544)
+[upf_control] [VERBOSE] [upf_control -> smf (RuleInstallOk)] {"header": {"src": "upf_control", "dst": "smf", "type": "RuleInstallOk", "id": "05d020e1-af1e-4332-8074-b7d3654e36ee"}, "body": {"session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "ok": true}}
+[smf] [VERBOSE] CreateSession reply body: {'device_id': '001', 'slice_id': 'eMBB', 'session_id': '001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549', 'ip_addr': '10.0.0.9', 'profile': {'rate_mbps': 50, 'latency_ms': 20}, 'admitted': True}
+[smf] [VERBOSE] [smf -> amf (CreateSessionOk)] {"header": {"src": "smf", "dst": "amf", "type": "CreateSessionOk", "id": "dd15ffdf-a23e-43af-abba-8de2d28a61c4"}, "body": {"device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "ip_addr": "10.0.0.9", "profile": {"rate_mbps": 50, "latency_ms": 20}, "admitted": true}}
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "ip_addr": "10.0.0.9"}}
+[base_station] [INFO] forwarding control message of type SessionResponse from AMF to device.
+[amf] [VERBOSE] [amf -> device (SessionResponse)] {"header": {"src": "amf", "dst": "device", "type": "SessionResponse", "id": "test"}, "body": {"admitted": true, "device_id": "001", "slice_id": "eMBB", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "ip_addr": "10.0.0.9"}}
+[device] [VERBOSE] [device -> base_station (UserDataUp)] {"header": {"src": "device", "dst": "base_station", "type": "UserDataUp", "id": "test"}, "body": {"device_id": "001", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "request_type": "FileRequest", "filename": "test.txt"}}
+[base_station] [INFO] forwarding data plane message UserDataUp to UPF
+[device] [VERBOSE] [device -> base_station (UserDataUp)] {"header": {"src": "device", "dst": "base_station", "type": "UserDataUp", "id": "test"}, "body": {"device_id": "001", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "request_type": "FileRequest", "filename": "test.txt"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57545)
+[upf_control] [VERBOSE] [upf_control -> nrf (Lookup)] {"header": {"src": "upf_control", "dst": "nrf", "type": "Lookup", "id": "6889013b-19ee-4766-aaa7-141312e88d9b"}, "body": {"name": "application"}}
+[nrf] [ERROR] entry of name application not found.
+[nrf] [VERBOSE] [nrf -> upf_control (LookupResult)] {"header": {"src": "nrf", "dst": "upf_control", "type": "LookupResult", "id": "6889013b-19ee-4766-aaa7-141312e88d9b"}, "body": {"found": true, "host": "127.0.0.1", "port": 8630}}
+[upf_control] [VERBOSE] [upf_control -> application (FileRequest)] {"header": {"src": "upf_control", "dst": "application", "type": "FileRequest", "id": "cc617167-a0cb-4b6c-b756-e0096fdb61a2"}, "body": {"device_id": "001", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549", "request_type": "FileRequest", "filename": "test.txt"}}
+[application] [INFO] accepted connection from ('127.0.0.1', 57546)
+[application] [VERBOSE] [application -> upf_control (FileResponse)] {"header": {"src": "application", "dst": "upf_control", "type": "FileResponse", "id": "cc617167-a0cb-4b6c-b756-e0096fdb61a2"}, "body": {"found": true, "filename": "test.txt", "content": "blahblahblah"}}
+[upf_control] [VERBOSE] [upf_control -> device (UserDataDown)] {"header": {"src": "upf_control", "dst": "device", "type": "UserDataDown", "id": "test"}, "body": {"found": true, "filename": "test.txt", "content": "blahblahblah", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549"}}
+[base_station] [INFO] forwarding data message of type UserDataDown from UPF to device.
+[upf_control] [VERBOSE] [upf_control -> device (UserDataDown)] {"header": {"src": "upf_control", "dst": "device", "type": "UserDataDown", "id": "test"}, "body": {"found": true, "filename": "test.txt", "content": "blahblahblah", "session_id": "001-eMBB-f8fce1eb-26bc-47c0-a1ae-2e97a8ad1549"}}
+[base_station] [INFO] upf_to_device: device or UPF closed connection.
+[base_station] [INFO] device_to_core: device closed connection.
+[base_station] [INFO] device_to_core finished, closing sockets.
+[base_station] [INFO] amf_to_device: device or AMF closed connection.
+[base_station] [INFO] finished handling device ('127.0.0.1', 57532)
+[amf] [INFO] client closed connection.
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57547)
+[test_client] [VERBOSE] [test_client -> nrf (Register)] {"header": {"src": "test_client", "dst": "nrf", "type": "Register", "id": "4592c3fd-0017-44b0-aada-44c828ae380e"}, "body": {"name": "test_service_x", "host": "127.0.0.1", "port": 9999}}
+[nrf] [INFO] test_service_x registered on 127.0.0.1:9999
+[nrf] [VERBOSE] [nrf -> test_client (RegisterOk)] {"header": {"src": "nrf", "dst": "test_client", "type": "RegisterOk", "id": "4592c3fd-0017-44b0-aada-44c828ae380e"}, "body": {"ok": true}}
+[test_client] [VERBOSE] [test_client -> nrf (Lookup)] {"header": {"src": "test_client", "dst": "nrf", "type": "Lookup", "id": "df4f11ff-7827-4b4d-9867-a60f1a9d6c58"}, "body": {"name": "test_service_x"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57548)
+[nrf] [ERROR] entry of name test_service_x not found.
+[nrf] [VERBOSE] [nrf -> test_client (LookupResult)] {"header": {"src": "nrf", "dst": "test_client", "type": "LookupResult", "id": "df4f11ff-7827-4b4d-9867-a60f1a9d6c58"}, "body": {"found": true, "host": "127.0.0.1", "port": 9999}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57549)
+[test_client] [VERBOSE] [test_client -> nrf (Remove)] {"header": {"src": "test_client", "dst": "nrf", "type": "Remove", "id": "0c921d44-64e0-48dc-8571-b07949f83c51"}, "body": {"name": "test_service_x"}}
+[nrf] [VERBOSE] [nrf -> test_client (RemoveResult)] {"header": {"src": "nrf", "dst": "test_client", "type": "RemoveResult", "id": "0c921d44-64e0-48dc-8571-b07949f83c51"}, "body": {"removed": "test_service_x"}}
+[test_client] [VERBOSE] [test_client -> nrf (Lookup)] {"header": {"src": "test_client", "dst": "nrf", "type": "Lookup", "id": "e76c3f83-14ea-4656-9947-88db572c1eab"}, "body": {"name": "test_service_x"}}
+[nrf] [INFO] accepted connection from ('127.0.0.1', 57550)
+[nrf] [ERROR] entry of name test_service_x not found.
+[nrf] [VERBOSE] [nrf -> test_client (LookupResult)] {"header": {"src": "nrf", "dst": "test_client", "type": "LookupResult", "id": "e76c3f83-14ea-4656-9947-88db572c1eab"}, "body": {"found": false}}

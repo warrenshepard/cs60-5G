@@ -5,6 +5,16 @@ Dartmouth CS60 25F Final Project
 
 Main logic for SMF.
 
+                Base Station             SMF        
+                     |                    |
+                     |                    |
+                     |                    |
+         HERE --> UPF Data - - - - - UPF Control
+                     |
+                     |
+                     |
+                Application
+
 AI Statement: None.
 """
 

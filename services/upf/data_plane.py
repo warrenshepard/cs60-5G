@@ -5,13 +5,10 @@ Dartmouth CS60 25F Final Project
 
 Data plane for UPF.
 
-TODO: would be cool and funny af to keep track of how much data each device uses
-so that they can be charged bc this is all about money!
-
 AI Statement: None.
 """
 
-from common import formatter, config, tcp, logging
+from common import formatter, tcp, logging
 from common.nrf_client import NRFClient
 from messages import api
 from . import rules
@@ -27,7 +24,7 @@ def call_application(msg_type, body):
     sock = tcp.connect("127.0.0.1", application_port)    # connect a socket
     msg = formatter.format_message(
         src=SERVICE_NAME,
-        dst="application",       # TODO: add all of these to a "constants" file or something in /common
+        dst="application",
         msg_type=msg_type,
         body=body,
     )

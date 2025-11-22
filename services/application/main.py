@@ -5,6 +5,13 @@ Dartmouth CS60 25F Final Project
 
 Main logic for application layer.
 
+               UPF Data Plane
+                     |
+                     |
+                     |
+           HERE --> Application
+
+
 AI Statement: Used ChatGPT to figure out how to normalize file paths (see read_file).
 """
 

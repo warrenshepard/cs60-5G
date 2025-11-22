@@ -5,6 +5,12 @@ Dartmouth CS60 25F Final Project
 
 Main logic for policy services.
 
+                AMF or SMF
+                     |
+                     |
+                     |
+          HERE --> Policy
+
 AI Statement: None.
 """
 

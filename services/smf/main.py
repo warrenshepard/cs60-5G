@@ -9,7 +9,7 @@ Main logic for SMF.
                      |
                      |
                      |
-                    SMF - - - Policy
+           HERE --> SMF - - - Policy
                      |
                      |
                      |

@@ -19,8 +19,11 @@ A 5G provider would likely base which bands each device/user is allowed to conne
 their subscription. 
 
 ## Slices
-### eMBB
-### URLLC
+### eMBB (Enhanced Mobile Broadband)
+high speed, high capacity (i.e. high throughput and high latency).
+
+### URLLC (Ultra-Reliable Low Latency Communications)
+Very very low latency with incredible reliability.
 
 ## Ports
 This section just keeps track of which ports each service/network component runs on.  
@@ -42,3 +45,5 @@ This includes both the control and data planes.
 ### Application
 The application layer which the user requests data from.
 Typically there would be multiple application layers, but I just grouped them into one port for now for simplicity.
+
+Note that the `safe` option in for the application turns security features on the application layer on/off (where setting it to `true` would turn them on).
