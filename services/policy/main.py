@@ -36,6 +36,7 @@ def handle_message(msg):
         except ValueError:
             # the device is not subscribed to the 5G carrier.
             reply_body = {"error": f"device {device_id} not subscribed"}
+            logging.log_error(SERVICE_NAME, f"device {device_id} not subscribed")
             return formatter.format_message(
                 src=SERVICE_NAME,
                 dst=src,

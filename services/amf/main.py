@@ -28,8 +28,6 @@ LOGIC:                                                      MESSAGE:
 AI Statement: None.
 """
 
-# TODO: verbose logging
-
 import sys
 
 from common import formatter, tcp, logging, config
@@ -111,6 +109,7 @@ def handle_registration_request(request):
             "allowed_slices": None,
             "error": error
         }
+        logging.log_error(SERVICE_NAME, f"revieced error from policy: {error}")
     else:
         # then we can successfully register the device
         # TODO: add some wrapper to ensure the correct message was recieved
@@ -157,6 +156,7 @@ def handle_session_request(request):
             "slice_id": slice_id,
             "additional": "device not registered.",
         }
+        logging.log_error(SERVICE_NAME, f"device {device_id} not registered.")
         return formatter.format_message(
             src=SERVICE_NAME,
             dst=src,
@@ -179,6 +179,7 @@ def handle_session_request(request):
             "slice_id": slice_id,
             "additional": "slice not allowed or availible for device.",
         }
+        logging.log_error(SERVICE_NAME, f"slice_id {slice_id} not allowed or availible for device")
         return formatter.format_message(
             src=SERVICE_NAME,
             dst=src,
@@ -227,6 +228,7 @@ def handle_message(msg):
     
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"recieved unknown message type: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=formatter.get_src(msg), # send back to src

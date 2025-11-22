@@ -93,6 +93,7 @@ def handle_message(msg):
                 "filename": filename,
                 "error": result
             }
+            logging.log_error(SERVICE_NAME, f"file not found: {filename}")
         return formatter.format_message(
             src=SERVICE_NAME,
             dst=src,

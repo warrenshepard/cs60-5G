@@ -19,10 +19,6 @@ Messages are relayed from the device to the amf and upf, and vice versa.
 
 AI Statement: Used ChatGPT for debugging main()
 
-TODO: multithread even more so that we can listen in on multiple devices
-TODO: security wrapper
-TODO: noise simulation and polar encoding (should be not too bad?)
-        i think that polar coding is on radio layer so would need to make system for that
 """
 
 import sys

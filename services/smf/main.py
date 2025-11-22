@@ -129,6 +129,7 @@ def handle_message(msg):
     
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"unknown message type recieved: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=formatter.get_src(msg), # send back to src

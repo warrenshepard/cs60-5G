@@ -74,6 +74,7 @@ def handle_message(msg):
                 "host": entry["host"],
                 "port": entry["port"],
                 }
+        logging.log_error(SERVICE_NAME, f"entry of name {name} not found.")
         return formatter.format_message(
             src=SERVICE_NAME,
             dst=src,
@@ -100,6 +101,7 @@ def handle_message(msg):
 
     # if unknown message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"recieved unknown message type: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=src,

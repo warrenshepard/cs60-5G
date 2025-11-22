@@ -30,7 +30,7 @@
     },
     "services": {
         "application": {
-            "safe": false
+            "safe": true
         }
     }
 }

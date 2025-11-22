@@ -8,7 +8,7 @@ Control plane for UPF.
 AI Statement: None.
 """
 
-from common import formatter
+from common import formatter, logging
 from messages import api
 from . import rules
 
@@ -47,6 +47,7 @@ def handle_message(msg):
         )
 
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"unknown message type recieved: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=src, # send back to src
