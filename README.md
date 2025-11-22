@@ -45,6 +45,7 @@ To run all tests, run
 ```bash
 pytest
 ```
+Note that this takes like 6 seconds to run.
 
 To run a specific test file, run
 ```bash
@@ -117,6 +118,8 @@ their subscription.
 ## Slices
 ### eMBB (Enhanced Mobile Broadband)
 high speed, high capacity (i.e. high throughput and high latency).
+
+NOTE: we put the latency is seconds so that it is actuallly noticable!
 
 ### URLLC (Ultra-Reliable Low Latency Communications)
 Very very low latency with incredible reliability.
