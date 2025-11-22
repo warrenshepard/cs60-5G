@@ -18,7 +18,7 @@ LOG_FILE_PATH = "logs/all.log"
 
 # NOTE: can change "a" to "w" if you want to overwrite for every
 # run instead of append (or vice versa)
-LOG_FILE = open(LOG_FILE_PATH, "a")
+LOG_FILE = open(LOG_FILE_PATH, "w")
 
 log_lock = threading.Lock() # to synchronize logging.
 
