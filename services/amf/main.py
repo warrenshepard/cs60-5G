@@ -36,7 +36,7 @@ from common import formatter, tcp, logging, config
 from messages import api
 from . import store
 
-SERVICVE_NAME = "amf"
+SERVICE_NAME = "amf"
 
 
 def call_policy(msg_type, body):
@@ -45,7 +45,7 @@ def call_policy(msg_type, body):
 
     sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket
     msg = formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst="policy",       # TODO: add all of these to a "constants" file or something in /common
         msg_type=msg_type,
         body=body,
@@ -62,7 +62,7 @@ def call_smf(msg_type, body):
 
     sock = tcp.connect("127.0.0.1", smf_port)    # connect a socket
     msg = formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst="smf",
         msg_type=msg_type,
         body=body,
@@ -121,7 +121,7 @@ def handle_registration_request(request):
         }
 
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src,
         msg_type=api.amf.REGISTRATION_RESPONSE,
         body=reply_body,
@@ -152,7 +152,7 @@ def handle_session_request(request):
             "additional": "device not registered.",
         }
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.amf.SESSTION_RESPONSE,
             body=reply_body,
@@ -174,7 +174,7 @@ def handle_session_request(request):
             "additional": "slice not allowed or availible for device.",
         }
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.amf.SESSTION_RESPONSE,
             body=reply_body,
@@ -202,7 +202,7 @@ def handle_session_request(request):
         "ip_addr": ip_addr,
     }
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src,
         msg_type=api.amf.SESSTION_RESPONSE,
         body=reply_body,
@@ -222,7 +222,7 @@ def handle_message(msg):
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=formatter.get_src(msg), # send back to src
         msg_type=api.common.ERROR,
         body=reply_body,
@@ -231,19 +231,19 @@ def handle_message(msg):
 
 
 def main(host, port):
-    logging.log_info(SERVICVE_NAME, f"listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
     server_sock = tcp.listen(host, port)
 
     # listen for connections
     while True:
         client_sock, addr = server_sock.accept()
-        logging.log_info(SERVICVE_NAME, f"accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
         # listen for messages until connection closes
         while True:
             msg = tcp.recv_json(client_sock)
             if msg is None:
-                logging.log_info(SERVICVE_NAME, "client closed connection.")
+                logging.log_info(SERVICE_NAME, "client closed connection.")
                 break
 
             reply = handle_message(msg)

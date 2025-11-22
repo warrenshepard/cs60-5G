@@ -14,7 +14,7 @@ from common import formatter, tcp, logging, config
 from messages import api
 from . import evaluator
 
-SERVICVE_NAME = "policy"
+SERVICE_NAME = "policy"
 
 def handle_message(msg):
     """Handles a single incoming request. Returns the reply message (as a dictionary)"""
@@ -34,7 +34,7 @@ def handle_message(msg):
             # the device is not subscribed to the 5G carrier.
             reply_body = {"error": f"device {device_id} not subscribed"}
             return formatter.format_message(
-                src=SERVICVE_NAME,
+                src=SERVICE_NAME,
                 dst=src,
                 msg_type=api.common.ERROR,
                 body=reply_body,
@@ -46,10 +46,10 @@ def handle_message(msg):
             "allowed_slices": allowed_slices,
         }
 
-        logging.log_verbose(SERVICVE_NAME, f"reply body: {reply_body}")
+        logging.log_verbose(SERVICE_NAME, f"reply body: {reply_body}")
 
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.policy.ALLOWED_SLICES,
             body=reply_body,
@@ -69,7 +69,7 @@ def handle_message(msg):
         }
 
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.policy.ADMIT_OK,
             body=reply_body,
@@ -86,7 +86,7 @@ def handle_message(msg):
             "profile": profile,
         }
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.policy.PROFILE,
             body=reply_body,
@@ -95,9 +95,9 @@ def handle_message(msg):
     
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
-    logging.log_error(SERVICVE_NAME, f"recieved unknown message type: {msg_type}")
+    logging.log_error(SERVICE_NAME, f"recieved unknown message type: {msg_type}")
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src,
         msg_type=api.common.ERROR,
         body=reply_body,
@@ -106,14 +106,14 @@ def handle_message(msg):
 
 
 def main(host, port):
-    logging.log_info(SERVICVE_NAME, f"listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
 
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
         # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
-        logging.log_info(SERVICVE_NAME, f"accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
         msg = tcp.recv_json(client_sock)
         if msg is not None:

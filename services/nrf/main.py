@@ -24,7 +24,7 @@ from common import formatter, tcp, logging, config
 from messages import api
 from . import store
 
-SERVICVE_NAME = "nrf"
+SERVICE_NAME = "nrf"
 
 
 def handle_message(msg):
@@ -50,7 +50,7 @@ def handle_message(msg):
         # format registration confirmation
         reply_body ={"ok": True}
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.nrf.REGISTER_OK,
             body=reply_body,
@@ -73,7 +73,7 @@ def handle_message(msg):
                 "port": entry["port"],
                 }
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src,
             msg_type=api.nrf.LOOKUP_RESULT,
             body=reply_body,
@@ -83,7 +83,7 @@ def handle_message(msg):
     # if unknown message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src,
         msg_type=api.common.ERROR,
         body=reply_body,
@@ -92,14 +92,14 @@ def handle_message(msg):
 
 
 def main(host, port):
-    logging.log_info(SERVICVE_NAME, f"listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
 
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
         # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
-        logging.log_info(SERVICVE_NAME, f"accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
         msg = tcp.recv_json(client_sock)
         if msg is not None:

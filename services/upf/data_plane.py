@@ -15,7 +15,7 @@ from common import formatter, config, tcp
 from messages import api
 from . import rules
 
-SERVICVE_NAME = "upf_control"
+SERVICE_NAME = "upf_control"
 
 
 def call_application(msg_type, body):
@@ -26,7 +26,7 @@ def call_application(msg_type, body):
 
     sock = tcp.connect("127.0.0.1", application_port)    # connect a socket
     msg = formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst="application",       # TODO: add all of these to a "constants" file or something in /common
         msg_type=msg_type,
         body=body,
@@ -69,7 +69,7 @@ def handle_message(msg):
             }
             # TODO: actually enfore the session rules!
             return formatter.format_message(
-                src=SERVICVE_NAME,
+                src=SERVICE_NAME,
                 dst=src, # send back to src
                 msg_type=api.upf.USER_DATA_DOWN,
                 body=reply_body,
@@ -78,7 +78,7 @@ def handle_message(msg):
         else:
             reply_body = {"error": f"unknown request type: {request_type}"}
             return formatter.format_message(
-                src=SERVICVE_NAME,
+                src=SERVICE_NAME,
                 dst=src, # send back to src
                 msg_type=api.common.ERROR,
                 body=reply_body,
@@ -87,7 +87,7 @@ def handle_message(msg):
 
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src, # send back to src
         msg_type=api.common.ERROR,
         body=reply_body,

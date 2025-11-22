@@ -25,7 +25,7 @@ from messages import api
 from . import ip_allocator
 import uuid
 
-SERVICVE_NAME = "smf"
+SERVICE_NAME = "smf"
 
 def call_policy(msg_type, body):
     """Sends a request to the policy service and returns the reply."""
@@ -34,7 +34,7 @@ def call_policy(msg_type, body):
 
     sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket TODO: have a variable for ip here
     msg = formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst="policy",       # TODO: add all of these to a "constants" file or something in /common
         msg_type=msg_type,
         body=body,
@@ -52,7 +52,7 @@ def call_upf_control(msg_type, body):
 
     sock = tcp.connect("127.0.0.1", upf_control_port)    # connect a socket TODO: have a variable for ip here
     msg = formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst="upf_control",       # TODO: add all of these to a "constants" file or something in /common
         msg_type=msg_type,
         body=body,
@@ -109,10 +109,10 @@ def handle_create_session(request):
     reply_body = rule_body  # return message is same as rule body for simplicity
     reply_body["admitted"] = True
 
-    logging.log_verbose(SERVICVE_NAME, f"CreateSession reply body: {reply_body}")
+    logging.log_verbose(SERVICE_NAME, f"CreateSession reply body: {reply_body}")
     
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src,
         msg_type=api.smf.CREATE_SESSION_OK,
         body=reply_body,
@@ -129,7 +129,7 @@ def handle_message(msg):
     # if other message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=formatter.get_src(msg), # send back to src
         msg_type=api.common.ERROR,
         body=reply_body,
@@ -138,14 +138,14 @@ def handle_message(msg):
 
 
 def main(host, port):
-    logging.log_info(SERVICVE_NAME, f"listening on {host}:{port}")
+    logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
 
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
         # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
-        logging.log_info(SERVICVE_NAME, f"accepted connection from {addr}")
+        logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
         msg = tcp.recv_json(client_sock)
         if msg is not None:

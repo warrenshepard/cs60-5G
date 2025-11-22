@@ -13,7 +13,7 @@ from messages import api
 from . import rules
 
 
-SERVICVE_NAME = "upf_control"
+SERVICE_NAME = "upf_control"
 
 
 def handle_message(msg):
@@ -39,7 +39,7 @@ def handle_message(msg):
             "ok": True,
         }
         return formatter.format_message(
-            src=SERVICVE_NAME,
+            src=SERVICE_NAME,
             dst=src, # send back to src
             msg_type=api.upf.RULE_INSTALL_OK,
             body=reply_body,
@@ -48,7 +48,7 @@ def handle_message(msg):
 
     reply_body = {"error": f"unknown message type: {msg_type}"}
     return formatter.format_message(
-        src=SERVICVE_NAME,
+        src=SERVICE_NAME,
         dst=src, # send back to src
         msg_type=api.common.ERROR,
         body=reply_body,
