@@ -26,6 +26,10 @@ start_service() {
 }
 
 start_service "NRF"          services.nrf.main
+
+# give the nrf time to get up (others depend on it)
+sleep 0.5
+
 start_service "Policy"       services.policy.main
 start_service "SMF"          services.smf.main
 start_service "UPF"          services.upf.main

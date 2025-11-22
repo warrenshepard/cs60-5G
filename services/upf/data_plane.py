@@ -12,17 +12,17 @@ AI Statement: None.
 """
 
 from common import formatter, config, tcp
+from common.nrf_client import NRFClient
 from messages import api
 from . import rules
 
 SERVICE_NAME = "upf_control"
+nrf_client = NRFClient(service=SERVICE_NAME)
 
 
 def call_application(msg_type, body):
     """Sends a request to the application service and returns the reply."""
-    application_port = config.get_port("application") 
-    # TODO: instead of this, services should register themselves in the NRF
-    # and we should make a request from there instead
+    _, application_port = nrf_client.lookup("application")
 
     sock = tcp.connect("127.0.0.1", application_port)    # connect a socket
     msg = formatter.format_message(

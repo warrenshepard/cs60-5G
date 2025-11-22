@@ -18,7 +18,15 @@ def register(name, host, port):
     """
     registry[name] = {"host": host, "port": port}
 
+
 def lookup(name):
-    """Returns {host, port} for a service name, or None if not found"""
+    """Returns {host, port} for a service name, or None if not found."""
     return registry.get(name)
 
+
+def remove(name):
+    """
+    Removes name -> {host, port} from the registry.
+    Returns None if name was not in the registry.
+    """
+    return registry.pop(name, None)

@@ -12,14 +12,14 @@ from common import tcp, config, formatter
 from messages import api
 
 HOST = "127.0.0.1"
-DEVICE_PORT = 8640
+BASE_STATION_PORT = config.get_port("base_station")
 
 
 def test_device_base_station_connection():
     """Tests that the device can connect to the base station."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a registration request
     msg = formatter.format_message(
@@ -39,7 +39,7 @@ def test_unknown_message_type_from_device():
     """Tests that error is given if unknown message type is send to base station."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a registration request
     msg = formatter.format_message(
@@ -66,7 +66,7 @@ def test_registration_request():
     """Tests that the device can register in the network."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a registration request
     msg = formatter.format_message(
@@ -95,7 +95,7 @@ def test_registration_request_bad_device():
     """Tests that the device cannot register if it is unsubscribed."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a registration request
     msg = formatter.format_message(
@@ -132,7 +132,7 @@ def test_session_request():
     """Tests that the device can request a session."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a session request (for a device that already registered)
     request_body = {
@@ -167,7 +167,7 @@ def test_session_request_device_not_registered():
     """Tests that the device can request a session."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a session request (for a device that's not registered)
     request_body = {
@@ -204,7 +204,7 @@ def test_session_request_device_not_subscribed_or_registered():
     """Tests that the device can request a session."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a session request (for a device that already registered)
     request_body = {
@@ -241,7 +241,7 @@ def test_session_request_bad_slice_id():
     """Tests that the device can request a session."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # craft a session request (for a device that already registered)
     request_body = {
@@ -278,7 +278,7 @@ def test_session_request_slice_id_not_allowed():
     """Tests that the device can request a session."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # first register device 002 (since it hasn't been registered yet)
     # craft a registration request
@@ -342,7 +342,7 @@ def test_user_data_up_echo():
     """Tests a baic echo request."""
 
     # connect to the base station
-    sock = tcp.connect(HOST, DEVICE_PORT)
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
 
     # first send session request (for a device that already registered)
     request_body = {
@@ -410,5 +410,5 @@ def test_user_data_up_echo():
 # TODO: 
 # bad session id
 # no payload
-# everything that would lead to an error maybe?
+# everything that would lead to an error maybe
 

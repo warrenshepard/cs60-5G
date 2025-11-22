@@ -13,3 +13,6 @@ REGISTER_OK = "RegisterOk"
 
 LOOKUP = "Lookup"
 LOOKUP_RESULT = "LookupResult"
+
+REMOVE = "Remove"
+REMOVE_RESULT = "RemoveResult"

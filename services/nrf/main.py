@@ -45,6 +45,8 @@ def handle_message(msg):
         host = body["host"]
         port = body["port"]
 
+        logging.log_info(SERVICE_NAME, f"{name} registered on {host}:{port}")
+
         store.register(name, host, port)    # register
 
         # format registration confirmation
@@ -79,6 +81,22 @@ def handle_message(msg):
             body=reply_body,
             id=id
         )
+    
+    if msg_type == api.nrf.REMOVE:
+        # get the name and remove it from the registry
+        name = body["name"]
+
+        _ = store.remove(name)
+
+        reply_body = {"removed": name}
+        return formatter.format_message(
+            src=SERVICE_NAME,
+            dst=src,
+            msg_type=api.nrf.REMOVE_RESULT,
+            body=reply_body,
+            id=id
+        )
+
 
     # if unknown message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
@@ -112,7 +130,6 @@ def main(host, port):
 if __name__ == "__main__":
     host = "127.0.0.1"
 
-    # TODO: add parseargs to this cuz i don't like this format
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:

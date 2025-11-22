@@ -11,9 +11,11 @@ AI Statement: None.
 import sys
 
 from common import formatter, tcp, logging, config
+from common.nrf_client import NRFClient
 from messages import api
 
 SERVICE_NAME = "application"
+nrf_client = NRFClient(service=SERVICE_NAME)
 
 
 def handle_message(msg):
@@ -52,6 +54,9 @@ def handle_message(msg):
 
 def main(host, port):
     logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
+
+    # register service
+    nrf_client.register(SERVICE_NAME, host, port)
 
     server_sock = tcp.listen(host, port)    # for listening
 

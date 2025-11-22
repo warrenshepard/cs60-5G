@@ -33,32 +33,38 @@ AI Statement: None.
 import sys
 
 from common import formatter, tcp, logging, config
+from common.nrf_client import NRFClient
 from messages import api
 from . import store
 
 SERVICE_NAME = "amf"
+nrf_client = NRFClient(service=SERVICE_NAME)
 
 
 def call_policy(msg_type, body):
     """Sends a request to the policy service and returns the reply."""
-    policy_port = config.get_port("policy")
+    _, policy_port = nrf_client.lookup("policy")
 
-    sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket
-    msg = formatter.format_message(
-        src=SERVICE_NAME,
-        dst="policy",       # TODO: add all of these to a "constants" file or something in /common
-        msg_type=msg_type,
-        body=body,
-    )
-    tcp.send_json(sock, msg)
-    reply = tcp.recv_json(sock)
-    sock.close()
-    return reply
+    if policy_port is not None:
+
+        sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket
+        msg = formatter.format_message(
+            src=SERVICE_NAME,
+            dst="policy",       # TODO: add all of these to a "constants" file or something in /common
+            msg_type=msg_type,
+            body=body,
+        )
+        tcp.send_json(sock, msg)
+        reply = tcp.recv_json(sock)
+        sock.close()
+        return reply
+    
+    return False
 
 
 def call_smf(msg_type, body):
     """Sends a request to the SMF service and returns the reply."""
-    smf_port = config.get_port("smf")
+    _, smf_port = nrf_client.lookup("smf")
 
     sock = tcp.connect("127.0.0.1", smf_port)    # connect a socket
     msg = formatter.format_message(
@@ -232,6 +238,10 @@ def handle_message(msg):
 
 def main(host, port):
     logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
+
+    # register service
+    nrf_client.register(SERVICE_NAME, host, port)
+
     server_sock = tcp.listen(host, port)
 
     # listen for connections

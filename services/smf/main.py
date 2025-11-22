@@ -21,16 +21,18 @@ AI Statement: None.
 import sys
 
 from common import formatter, tcp, logging, config
+from common.nrf_client import NRFClient
 from messages import api
 from . import ip_allocator
 import uuid
 
 SERVICE_NAME = "smf"
+nrf_client = NRFClient(service=SERVICE_NAME)
+
 
 def call_policy(msg_type, body):
     """Sends a request to the policy service and returns the reply."""
-    #TODO: put this method in a shared location
-    policy_port = config.get_port("policy")
+    _, policy_port = nrf_client.lookup("policy")
 
     sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket TODO: have a variable for ip here
     msg = formatter.format_message(
@@ -47,8 +49,7 @@ def call_policy(msg_type, body):
 
 def call_upf_control(msg_type, body):
     """Sends a request to the upf_control service and returns the reply."""
-    #TODO: put this method in a shared location
-    upf_control_port = config.get_port("upf_control")
+    _, upf_control_port = nrf_client.lookup("upf_control")
 
     sock = tcp.connect("127.0.0.1", upf_control_port)    # connect a socket TODO: have a variable for ip here
     msg = formatter.format_message(
@@ -139,6 +140,8 @@ def handle_message(msg):
 
 def main(host, port):
     logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
+
+    nrf_client.register(SERVICE_NAME, host, port)
 
     server_sock = tcp.listen(host, port)    # for listening
 

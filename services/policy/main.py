@@ -11,10 +11,13 @@ AI Statement: None.
 import sys
 
 from common import formatter, tcp, logging, config
+from common.nrf_client import NRFClient
 from messages import api
 from . import evaluator
 
 SERVICE_NAME = "policy"
+nrf_client = NRFClient(service=SERVICE_NAME)
+
 
 def handle_message(msg):
     """Handles a single incoming request. Returns the reply message (as a dictionary)"""
@@ -107,6 +110,8 @@ def handle_message(msg):
 
 def main(host, port):
     logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
+
+    nrf_client.register(SERVICE_NAME, host, port)
 
     server_sock = tcp.listen(host, port)    # for listening
 

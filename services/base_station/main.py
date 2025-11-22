@@ -29,6 +29,7 @@ import sys
 import threading
 
 from common import tcp, logging, config, formatter
+from common.nrf_client import NRFClient
 from messages import api
 
 # globals
@@ -44,6 +45,9 @@ CONTROL = [
 DATA = [
     api.upf.USER_DATA_UP
 ]
+
+nrf_client = NRFClient(service=SERVICE_NAME)
+
 
 def device_to_core(device_sock, amf_sock, upf_sock):
     """Relays messages from device to amf and upf."""
@@ -113,8 +117,8 @@ def handle_device(device_sock, addr):
     """Handles one device connection: sets up AMF+UPF links and relay threads."""
     logging.log_info(SERVICE_NAME, f"handling new device from {addr}")
 
-    amf_port = config.get_port("amf")
-    upf_port = config.get_port("upf_data")
+    _, amf_port = nrf_client.lookup("amf")
+    _, upf_port = nrf_client.lookup("upf_data")
 
     # connect with AMF
     logging.log_info(SERVICE_NAME, f"connecting to AMF on {HOST}:{amf_port}.")
@@ -167,8 +171,10 @@ def handle_device(device_sock, addr):
     logging.log_info(SERVICE_NAME, f"finished handling device {addr}")
 
 
-def main():
-    device_port = 8640  # listening port for device connections
+def main(port):
+    device_port = port  # listening port for device connections
+    nrf_client.register(SERVICE_NAME, HOST, port)
+
     logging.log_info(SERVICE_NAME, f"listening for devices on {HOST}:{device_port}.")
 
     listen_sock = tcp.listen(HOST, device_port)
@@ -188,4 +194,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    if len(sys.argv) >= 2:
+        port = int(sys.argv[1])
+    else:
+        port = config.get_port("base_station")
+
+    main(port)

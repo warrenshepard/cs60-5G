@@ -12,9 +12,11 @@ import sys
 import threading
 
 from common import tcp, logging, config
+from common.nrf_client import NRFClient
 from . import control_plane, data_plane
 
 SERVICE_NAME = "upf"
+nrf_client = NRFClient(service=SERVICE_NAME)
 
 
 def control_listener(host, port):
@@ -61,6 +63,9 @@ def main():
     # TODO: (IMPORTANT) put these in the config then use the method to get them
     control_port = config.get_port("upf_control")
     data_port = config.get_port("upf_data")
+
+    nrf_client.register("upf_control", host, control_port)
+    nrf_client.register("upf_data", host, data_port)
 
     control_thread = threading.Thread(
         target=control_listener,
