@@ -15,6 +15,34 @@ HOST = "127.0.0.1"
 BASE_STATION_PORT = config.get_port("base_station")
 
 
+def _create_session(sock):
+    """Creates session for device_id 001"""  
+
+    # first send session request (for a device that already registered)
+    request_body = {
+        "device_id": "001",
+        "slice_id": "eMBB" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    # get the session id
+    reply_body = reply["body"]
+    session_id = reply_body["session_id"]
+
+    return session_id
+
+
+
 def test_device_base_station_connection():
     """Tests that the device can connect to the base station."""
 
@@ -340,46 +368,16 @@ def test_session_request_slice_id_not_allowed():
 
 def test_user_data_up_echo():
     """Tests a baic echo request."""
-
-    # connect to the base station
+    # create sock
     sock = tcp.connect(HOST, BASE_STATION_PORT)
 
-    # first send session request (for a device that already registered)
-    request_body = {
-        "device_id": "001",
-        "slice_id": "eMBB" 
-    }
-    msg = formatter.format_message(
-        src="device",
-        dst="base_station",
-        msg_type=api.amf.SESSTION_REQUEST,
-        body=request_body,
-        id="test"
-    )
-
-    tcp.send_json(sock, msg)
-
-    reply = tcp.recv_json(sock)
-
-    print(reply)
-
-    reply_id = formatter.get_id(reply)
-    reply_type = formatter.get_type(reply)
-    reply_body = reply["body"]
-    device_admitted = reply_body["admitted"]
-
-    assert reply_id == "test"
-    assert reply_type == api.amf.SESSTION_RESPONSE
-    assert device_admitted == True
-
     # get the session id
-    session_id = reply_body["session_id"]
-
+    session_id = _create_session(sock)
     # then create make a request to the UPF
     request_body = {
         "device_id": "001",
         "session_id": session_id,
-        "request_type": "ECHO",
+        "request_type": api.application.ECHO_REQUEST,
         "payload": "test123"
     }
     msg = formatter.format_message(
@@ -405,6 +403,48 @@ def test_user_data_up_echo():
     assert reply_type == api.upf.USER_DATA_DOWN
     assert reply_session_id == session_id
     assert reply_payload == "APPLICATION ECHO: test123"
+
+
+def test_user_data_up_file_request():
+    """Tests a baic echo request."""
+    # create sock
+    sock = tcp.connect(HOST, BASE_STATION_PORT)
+
+    # get the session id
+    session_id = _create_session(sock)
+    # then create make a request to the UPF
+    request_body = {
+        "device_id": "001",
+        "session_id": session_id,
+        "request_type": api.application.FILE_REQUEST,
+        "filename": "test.txt"
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.upf.USER_DATA_UP,
+        body=request_body,
+        id="test"
+    )
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    reply_session_id = reply_body["session_id"]
+    reply_file_found = reply_body["found"]
+    reply_content = reply_body["content"]
+
+    assert reply_id == "test"
+    assert reply_type == api.upf.USER_DATA_DOWN
+    assert reply_session_id == session_id
+    assert reply_file_found == True
+    assert reply_content == "blahblahblah"
+
     
 
 # TODO: 

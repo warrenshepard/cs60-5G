@@ -5,17 +5,51 @@ Dartmouth CS60 25F Final Project
 
 Main logic for application layer.
 
-AI Statement: None.
+AI Statement: Used ChatGPT to figure out how to normalize file paths (see read_file).
 """
 
 import sys
+import os
 
 from common import formatter, tcp, logging, config
 from common.nrf_client import NRFClient
 from messages import api
 
 SERVICE_NAME = "application"
+FILE_DIR = "assets"
+
+safe = True     # toggle configuration in policies/policies.json if you want to change this.
 nrf_client = NRFClient(service=SERVICE_NAME)
+
+
+def read_file(filename):
+    """
+    Returns found [bool], content/error message [str].
+    Only returns files if they're in ./FILE_DIR.
+    """
+    # append FILE_DIR to form a file path.
+    if safe:
+        # normalize the file path to the simplest possible form
+        # for example, "assets/../../passwords.txt" would be normalized to "../passwords.txt"
+        # hopefully this example shows why this is important for saftey, as if this is not done
+        # (with the addition of checking that the file path starts with FILE_DIR), then very 
+        # bad things could happen!
+        path = os.path.normpath(os.path.join(FILE_DIR, filename))
+    else:
+        path = os.path.join(FILE_DIR, filename)
+
+    # check that the file is in the correct foler
+    if not path.startswith(FILE_DIR):
+        return False, "invalid filename"
+
+    if not os.path.exists(path):
+        return False, "file not found"
+
+    try:
+        with open(path, "r") as f:
+            return True, f.read()
+    except Exception as e:
+        return False, str(e)
 
 
 def handle_message(msg):
@@ -39,10 +73,37 @@ def handle_message(msg):
             id=id
         )
     
-    # TODO: add functionality for more complex requests, like requesting a file.
-    
+    if msg_type == api.application.FILE_REQUEST:
+        # get file name
+        filename = body["filename"]
+
+        # read file
+        found, result = read_file(filename)
+
+        # format and send response
+        if found:
+            reply_body = {
+                "found": True,
+                "filename": filename,
+                "content": result
+            }
+        else:
+            reply_body = {
+                "found": False,
+                "filename": filename,
+                "error": result
+            }
+        return formatter.format_message(
+            src=SERVICE_NAME,
+            dst=src,
+            msg_type=api.application.FILE_RESPONSE,
+            body=reply_body,
+            id=id
+        )
+
     # if unknown message type sent, return an error
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"unknown message type recieved: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=src,

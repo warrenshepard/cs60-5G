@@ -11,7 +11,7 @@ so that they can be charged bc this is all about money!
 AI Statement: None.
 """
 
-from common import formatter, config, tcp
+from common import formatter, config, tcp, logging
 from common.nrf_client import NRFClient
 from messages import api
 from . import rules
@@ -47,45 +47,35 @@ def handle_message(msg):
     id = formatter.get_id(msg)
     body = msg["body"]
 
-    # TODO: write code for handling different message types
+
     if msg_type == api.upf.USER_DATA_UP:
         session_id = body["session_id"]
         request_type = body["request_type"]
-        payload = body["payload"]
+        # payload = body["payload"]
 
-        if request_type == "ECHO":  #TODO: make this a constant somewhere or just use the one in api.applicaiton
-            echo_request_body = {"payload": payload}
-            app_reply = call_application(
-                api.application.ECHO_REQUEST,
-                echo_request_body
-            )
+        # just use same body for simplicity
+        app_reply = call_application(
+            request_type,
+            body
+        )
 
-            app_body = app_reply["body"]
-            app_payload = app_body["payload"]
-
-            reply_body = {
-                "session_id": session_id,
-                "payload": app_payload
-            }
-            # TODO: actually enfore the session rules!
-            return formatter.format_message(
+        app_body = app_reply["body"]
+        reply_body = app_body
+        reply_body["session_id"] = session_id
+        
+        return formatter.format_message(
                 src=SERVICE_NAME,
                 dst=src, # send back to src
                 msg_type=api.upf.USER_DATA_DOWN,
                 body=reply_body,
                 id=id
             )
-        else:
-            reply_body = {"error": f"unknown request type: {request_type}"}
-            return formatter.format_message(
-                src=SERVICE_NAME,
-                dst=src, # send back to src
-                msg_type=api.common.ERROR,
-                body=reply_body,
-                id=id
-            )
+
+        # TODO: actually enfore the session rules!
+
 
     reply_body = {"error": f"unknown message type: {msg_type}"}
+    logging.log_error(SERVICE_NAME, f"unknown message type recieved: {msg_type}")
     return formatter.format_message(
         src=SERVICE_NAME,
         dst=src, # send back to src

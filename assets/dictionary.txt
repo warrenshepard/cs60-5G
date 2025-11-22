@@ -1,0 +1,3 @@
+Implement a single-threaded dictionary server that will serve requests to define and to lookup meanings of words, and a dictionary client that gets words from the console (one at a time) and asks the server for their definitions.
+
+Take the basic HelloClient and HelloServer, and modify them so that there are meaningful messages back and forth. For example, a “GET word” request to look up a word in a dictionary, and a “SET word meaning...” request to define that word in the dictionary. The server holds a map. Don’t bother to synchronize access to the map for the drill, but consider the potential pitfalls when going to multi-threaded.
