@@ -7,3 +7,6 @@ __pycache__/
 
 # pytest cache
 .pytest_cache/
+
+# all the logs lol
+logs/

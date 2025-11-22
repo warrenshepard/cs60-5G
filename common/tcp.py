@@ -11,6 +11,8 @@ AI Statement: Used ChatGPT to figure out how the json library worked.
 
 import json
 import socket
+from . import logging
+from . import formatter
 
 
 def connect(host, port):
@@ -38,6 +40,15 @@ def send_json(sock, message):
     """
     data = json.dumps(message)  # convert to JSON
     sock.sendall((data + "\n").encode("utf-8")) # newline denotes end of file
+
+    try:
+        src = formatter.get_src(message)
+        dst = formatter.get_dst(message)
+        msg_type = formatter.get_type(message)
+        log_msg = f"[{src} -> {dst} ({msg_type})] "
+        logging.log_verbose(src, log_msg + data)
+    except:
+        pass
 
 
 def recv_json(sock):
