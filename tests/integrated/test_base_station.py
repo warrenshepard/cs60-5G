@@ -14,6 +14,7 @@ from messages import api
 HOST = "127.0.0.1"
 DEVICE_PORT = 8640
 
+
 def test_device_base_station_connection():
     """Tests that the device can connect to the base station."""
 
@@ -125,3 +126,289 @@ def test_registration_request_bad_device():
     assert error == "device 067 not subscribed"
     assert device_id == "067"
     assert allowed_slices is None
+
+
+def test_session_request():
+    """Tests that the device can request a session."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # craft a session request (for a device that already registered)
+    request_body = {
+        "device_id": "001",
+        "slice_id": "eMBB" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == True
+
+
+def test_session_request_device_not_registered():
+    """Tests that the device can request a session."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # craft a session request (for a device that's not registered)
+    request_body = {
+        "device_id": "003",
+        "slice_id": "eMBB" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+    additional = reply_body["additional"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == False
+    assert additional == "device not registered."
+
+
+def test_session_request_device_not_subscribed_or_registered():
+    """Tests that the device can request a session."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # craft a session request (for a device that already registered)
+    request_body = {
+        "device_id": "idontbelong",
+        "slice_id": "eMBB" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+    additional = reply_body["additional"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == False
+    assert additional == "device not registered."
+
+
+def test_session_request_bad_slice_id():
+    """Tests that the device can request a session."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # craft a session request (for a device that already registered)
+    request_body = {
+        "device_id": "001",
+        "slice_id": "idontexist" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+    additional = reply_body["additional"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == False
+    assert additional == "slice not allowed or availible for device."
+
+
+def test_session_request_slice_id_not_allowed():
+    """Tests that the device can request a session."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # first register device 002 (since it hasn't been registered yet)
+    # craft a registration request
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.REGISTRATION_REQUEST,
+        body={"device_id": "002"},
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_registered = reply_body["registered"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.REGISTRATION_RESPONSE
+    assert device_registered == True
+
+    # now craft a session request (for a device that already registered)
+    request_body = {
+        "device_id": "002",
+        "slice_id": "URLLC" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    print(msg)
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+    additional = reply_body["additional"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == False
+    assert additional == "slice not allowed or availible for device."
+
+
+def test_user_data_up_echo():
+    """Tests a baic echo request."""
+
+    # connect to the base station
+    sock = tcp.connect(HOST, DEVICE_PORT)
+
+    # first send session request (for a device that already registered)
+    request_body = {
+        "device_id": "001",
+        "slice_id": "eMBB" 
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.amf.SESSTION_REQUEST,
+        body=request_body,
+        id="test"
+    )
+
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    device_admitted = reply_body["admitted"]
+
+    assert reply_id == "test"
+    assert reply_type == api.amf.SESSTION_RESPONSE
+    assert device_admitted == True
+
+    # get the session id
+    session_id = reply_body["session_id"]
+
+    # then create make a request to the UPF
+    request_body = {
+        "device_id": "001",
+        "session_id": session_id,
+        "request_type": "ECHO",
+        "payload": "test123"
+    }
+    msg = formatter.format_message(
+        src="device",
+        dst="base_station",
+        msg_type=api.upf.USER_DATA_UP,
+        body=request_body,
+        id="test"
+    )
+    tcp.send_json(sock, msg)
+
+    reply = tcp.recv_json(sock)
+
+    print(reply)
+
+    reply_id = formatter.get_id(reply)
+    reply_type = formatter.get_type(reply)
+    reply_body = reply["body"]
+    reply_session_id = reply_body["session_id"]
+    reply_payload = reply_body["payload"]
+
+    assert reply_id == "test"
+    assert reply_type == api.upf.USER_DATA_DOWN
+    assert reply_session_id == session_id
+    assert reply_payload == "APPLICATION ECHO: test123"
+    
+
+# TODO: 
+# bad session id
+# no payload
+# everything that would lead to an error maybe?
+

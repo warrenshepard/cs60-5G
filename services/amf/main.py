@@ -119,7 +119,7 @@ def handle_registration_request(request):
             "device_id": device_id,
             "allowed_slices": allowed_slices,
         }
-        
+
     return formatter.format_message(
         src=SERVICVE_NAME,
         dst=src,
@@ -164,9 +164,9 @@ def handle_session_request(request):
         api.policy.ADMIT,
         {"device_id": device_id, "slice_id" :slice_id}
     )
-    admitted = admit_reply["body"]["admitted"]
+    admit = admit_reply["body"]["admit"]
 
-    if not admitted:    # reject request
+    if not admit:    # reject request
         reply_body = {
             "admitted": False,
             "device_id": device_id,
@@ -188,6 +188,7 @@ def handle_session_request(request):
     )
 
     session_id = smf_reply["body"]["session_id"]
+    ip_addr = smf_reply["body"]["ip_addr"]
 
     store.add_session(session_id, device_id, slice_id)
 
@@ -198,6 +199,7 @@ def handle_session_request(request):
         "device_id": device_id,
         "slice_id": slice_id,
         "session_id": session_id,
+        "ip_addr": ip_addr,
     }
     return formatter.format_message(
         src=SERVICVE_NAME,
@@ -230,20 +232,24 @@ def handle_message(msg):
 
 def main(host, port):
     logging.log_info(SERVICVE_NAME, f"listening on {host}:{port}")
+    server_sock = tcp.listen(host, port)
 
-    server_sock = tcp.listen(host, port)    # for listening
-
+    # listen for connections
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
-        client_sock, addr = server_sock.accept()   # for sending
+        client_sock, addr = server_sock.accept()
         logging.log_info(SERVICVE_NAME, f"accepted connection from {addr}")
 
-        msg = tcp.recv_json(client_sock)
-        if msg is not None:
+        # listen for messages until connection closes
+        while True:
+            msg = tcp.recv_json(client_sock)
+            if msg is None:
+                logging.log_info(SERVICVE_NAME, "client closed connection.")
+                break
+
             reply = handle_message(msg)
             tcp.send_json(client_sock, reply)
 
-        client_sock.close() # better to only keep connections open during use
+        client_sock.close()
 
 
 if __name__ == "__main__":

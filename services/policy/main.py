@@ -60,12 +60,12 @@ def handle_message(msg):
     if msg_type == api.policy.ADMIT:
         device_id = body["device_id"]
         slice_id = body["slice_id"]
-        allowed_slices = evaluator.admit(device_id, slice_id)
+        admit = evaluator.admit(device_id, slice_id)
 
         reply_body = {
+            "admit": admit,
             "device_id": device_id,
             "slice_id": slice_id,
-            "allowed_slices": allowed_slices,
         }
 
         return formatter.format_message(

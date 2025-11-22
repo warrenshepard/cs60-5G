@@ -25,6 +25,7 @@ def log_error(service, msg):
     "Log an error"
     log(service, "ERROR", msg)
 
+
 def log_verbose(service, msg):
     "Log verbose (can be turned on and off)"
     log(service, "VERBOSE", msg)

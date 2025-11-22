@@ -23,6 +23,7 @@ import sys
 from common import formatter, tcp, logging, config
 from messages import api
 from . import ip_allocator
+import uuid
 
 SERVICVE_NAME = "smf"
 
@@ -88,7 +89,8 @@ def handle_create_session(request):
 
 
     # ask UPF control plane to install the rules for this session
-    session_id = f"{device_id}-{slice_id}"
+    sid_uuid = str(uuid.uuid4())
+    session_id = f"{device_id}-{slice_id}-{sid_uuid}"
 
     rule_body = {
         "device_id": device_id,
@@ -105,6 +107,9 @@ def handle_create_session(request):
 
     # reply back to AMF with CreateSessionOk
     reply_body = rule_body  # return message is same as rule body for simplicity
+    reply_body["admitted"] = True
+
+    logging.log_verbose(SERVICVE_NAME, f"CreateSession reply body: {reply_body}")
     
     return formatter.format_message(
         src=SERVICVE_NAME,
