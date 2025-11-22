@@ -51,7 +51,19 @@ def handle_message(msg):
     if msg_type == api.upf.USER_DATA_UP:
         session_id = body["session_id"]
         request_type = body["request_type"]
-        # payload = body["payload"]
+        
+        # get the rules
+        rule = rules.get_rule(session_id)
+        if not rule:
+            reply_body = {"error": f"session id {session_id} invalid/does not exist."}
+            logging.log_error(SERVICE_NAME, f"session id {session_id} invalid/does not exist.")
+            return formatter.format_message(
+                src=SERVICE_NAME,
+                dst=src, # send back to src
+                msg_type=api.common.ERROR,
+                body=reply_body,
+                id=id
+            )
 
         # just use same body for simplicity
         app_reply = call_application(
@@ -70,8 +82,6 @@ def handle_message(msg):
                 body=reply_body,
                 id=id
             )
-
-        # TODO: actually enfore the session rules!
 
 
     reply_body = {"error": f"unknown message type: {msg_type}"}

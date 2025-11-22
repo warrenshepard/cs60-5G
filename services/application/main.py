@@ -114,10 +114,16 @@ def handle_message(msg):
 
 
 def main(host, port):
+    global safe
+
     logging.log_info(SERVICE_NAME, f"listening on {host}:{port}")
 
     # register service
     nrf_client.register(SERVICE_NAME, host, port)
+
+    # figure out if we want to be safe or not
+    policies = config.get_service_config(SERVICE_NAME)
+    safe = policies.get("safe", True)   # default to True for safteys sake
 
     server_sock = tcp.listen(host, port)    # for listening
 

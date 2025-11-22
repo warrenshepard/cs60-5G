@@ -16,4 +16,4 @@ def install_rule(session_id, rule):
 
 def get_rule(session_id):
     """Get the rule for a session."""
-    return rules.get(session_id)
+    return rules.get(session_id, None)

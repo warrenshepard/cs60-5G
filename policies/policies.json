@@ -27,5 +27,10 @@
         "upf_control": 8620,
         "upf_data": 8621,
         "application": 8630
+    },
+    "services": {
+        "application": {
+            "safe": false
+        }
     }
 }
