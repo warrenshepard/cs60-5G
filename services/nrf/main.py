@@ -7,6 +7,12 @@ Main logic for NRF.
 
 AI Statement: None.
 
+                Any Service
+                     |
+                     |
+                     |
+           HERE --> NRF
+
 Supported (incoming) message types and formats:
 - Register: {name, host, port}
 - Lookup: {name}

@@ -36,7 +36,7 @@ After the services are live, you can interact with the network from the device s
 ```bash
 python device.py
 ```
-Instructions on how to use the user interface will be given. This allows you to interact with the process of registering a device, registering a session, then using that session to 
+Instructions on how to use the user interface will be given. This allows you to interact with the process of registering a device, registering a session, then using that session to request data from the application (a simple file provider service). We chose to do it this way instead of having the device handle registration adn session requests becuase this way it is more fun, as otherwise it would just act the same as a file provider service and there would be no way to interact with the network!
 
 ### Tests
 IMPORTANT: before running any of the integrated tests, make sure that the network is live. You can do this by running `./run.sh` (see above). This is becuase the integrated tests assume that the network is live. If you don't run the network first, those tests will fail!

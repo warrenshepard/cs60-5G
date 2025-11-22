@@ -8,6 +8,8 @@ Data plane for UPF.
 AI Statement: None.
 """
 
+import time
+
 from common import formatter, tcp, logging
 from common.nrf_client import NRFClient
 from messages import api
@@ -61,6 +63,13 @@ def handle_message(msg):
                 body=reply_body,
                 id=id
             )
+        
+        profile = rule["profile"]
+        latency_ms = profile["latency_s"]
+
+        # to simulate the latency
+        # note that we do not handle the rate for simplicity
+        time.sleep(latency_ms)
 
         # just use same body for simplicity
         app_reply = call_application(
