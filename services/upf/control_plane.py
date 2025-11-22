@@ -31,7 +31,6 @@ def handle_message(msg):
         session_id = body["session_id"]
 
         # store the body as a whole for simplicity
-        # TODO: does this need to be changed at all? maybe parsed a bit...?
         rules.install_rule(session_id, body)
 
         reply_body = {

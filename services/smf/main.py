@@ -34,10 +34,10 @@ def call_policy(msg_type, body):
     """Sends a request to the policy service and returns the reply."""
     _, policy_port = nrf_client.lookup("policy")
 
-    sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket TODO: have a variable for ip here
+    sock = tcp.connect("127.0.0.1", policy_port)
     msg = formatter.format_message(
         src=SERVICE_NAME,
-        dst="policy",       # TODO: add all of these to a "constants" file or something in /common
+        dst="policy",
         msg_type=msg_type,
         body=body,
     )
@@ -51,10 +51,10 @@ def call_upf_control(msg_type, body):
     """Sends a request to the upf_control service and returns the reply."""
     _, upf_control_port = nrf_client.lookup("upf_control")
 
-    sock = tcp.connect("127.0.0.1", upf_control_port)    # connect a socket TODO: have a variable for ip here
+    sock = tcp.connect("127.0.0.1", upf_control_port)
     msg = formatter.format_message(
         src=SERVICE_NAME,
-        dst="upf_control",       # TODO: add all of these to a "constants" file or something in /common
+        dst="upf_control", 
         msg_type=msg_type,
         body=body,
     )
@@ -100,7 +100,6 @@ def handle_create_session(request):
         "ip_addr": ip_addr,
         "profile": profile,
     }
-    # TODO: check for a successful installation
     _ = call_upf_control(
         api.upf.RULE_INSTALL,
         rule_body
@@ -147,7 +146,6 @@ def main(host, port):
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
         logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
@@ -162,7 +160,6 @@ def main(host, port):
 if __name__ == "__main__":
     host = "127.0.0.1"
 
-    # TODO: add parseargs to this cuz i don't like this format
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:

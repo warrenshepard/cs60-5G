@@ -15,8 +15,6 @@ Outgoing message types and formats:
 - RegisterOk: {ok <bool>}
 - LookupResult: {found <bool>, host, port}
 """
-# TODO: ^put the message body formats above somewhere in the messages folder
-# and also change the note to "see <file> for supported message types and formats" or something like that
 
 import sys
 
@@ -37,10 +35,6 @@ def handle_message(msg):
 
     if msg_type == api.nrf.REGISTER:
         # get info
-        # TODO: potentially add helper function in messages.py to get this info which
-        # could return a custom error if it's not there. Then we can try/catch this
-        # for invalid message format. IMPORTANT: this could also be handled by some function in the API,
-        # idk how exactly that would look though
         name = body["name"]
         host = body["host"]
         port = body["port"]
@@ -60,7 +54,6 @@ def handle_message(msg):
         )
     
     if msg_type == api.nrf.LOOKUP:
-        # TODO: same as above
         name = body["name"]
 
         entry = store.lookup(name)
@@ -117,7 +110,6 @@ def main(host, port):
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
         logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 

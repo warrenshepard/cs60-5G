@@ -117,7 +117,6 @@ def main(host, port):
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
         logging.log_info(SERVICE_NAME, f"accepted connection from {addr}")
 
@@ -132,7 +131,6 @@ def main(host, port):
 if __name__ == "__main__":
     host = "127.0.0.1"
 
-    # TODO: add parseargs to this cuz i don't like this format
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:

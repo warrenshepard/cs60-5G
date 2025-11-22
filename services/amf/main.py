@@ -48,7 +48,7 @@ def call_policy(msg_type, body):
         sock = tcp.connect("127.0.0.1", policy_port)    # connect a socket
         msg = formatter.format_message(
             src=SERVICE_NAME,
-            dst="policy",       # TODO: add all of these to a "constants" file or something in /common
+            dst="policy",
             msg_type=msg_type,
             body=body,
         )
@@ -91,7 +91,6 @@ def handle_registration_request(request):
     device_id = body["device_id"]
 
     # get allowed slices from policy service
-    # TODO: error handling if the device is not in the policy
     policy_reply = call_policy(
         api.policy.GET_ALLOWED_SLICES,
         {"device_id": device_id}
@@ -112,7 +111,6 @@ def handle_registration_request(request):
         logging.log_error(SERVICE_NAME, f"revieced error from policy: {error}")
     else:
         # then we can successfully register the device
-        # TODO: add some wrapper to ensure the correct message was recieved
         allowed_slices = policy_reply["body"]["allowed_slices"]
 
         # register device
@@ -200,7 +198,6 @@ def handle_session_request(request):
     store.add_session(session_id, device_id, slice_id)
 
     # format reply
-    # TODO: (IMPORTANT) probably send IP address as well
     reply_body = {
         "admitted": True,
         "device_id": device_id,
@@ -267,7 +264,6 @@ def main(host, port):
 if __name__ == "__main__":
     host = "127.0.0.1"
 
-    # TODO: add parseargs to this cuz i don't like this format
     if len(sys.argv) >= 2:
         port = int(sys.argv[1])
     else:

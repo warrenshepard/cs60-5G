@@ -26,7 +26,6 @@ def control_listener(host, port):
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
         logging.log_info(SERVICE_NAME, f"control accepted connection from {addr}")
 
@@ -45,7 +44,6 @@ def data_listener(host, port):
     server_sock = tcp.listen(host, port)    # for listening
 
     while True:
-        # TODO: does this need to be multithreaded? i don't think so for our purposes...?
         client_sock, addr = server_sock.accept()   # for sending
         logging.log_info(SERVICE_NAME, f"data accepted connection from {addr}")
 
@@ -60,7 +58,6 @@ def data_listener(host, port):
 def main():
     host = "127.0.0.1"
 
-    # TODO: (IMPORTANT) put these in the config then use the method to get them
     control_port = config.get_port("upf_control")
     data_port = config.get_port("upf_data")
 
